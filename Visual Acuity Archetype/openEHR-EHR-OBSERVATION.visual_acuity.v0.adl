@@ -116,7 +116,7 @@ American Academy Of Ophthalmology (Author), Fred M. Wilson II (Editor), MD (Edit
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"e4d239631e62d0d11fb18cd8ee03fea0">
+		["MD5-CAM-1.0.1"] = <"72c870544f9648a6c3b368cd665a235f">
 		["build_uid"] = <"cd121fe7-8675-4514-a020-87bf81a809c8">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -1111,7 +1111,7 @@ When M Notation is used, the nominator is also the real testing distance.">
 				["at0356"] = <
 					text = <"ETDRS letter score">
 					description = <"The number of optotypes correctly identified by the patient on a logMAR/ETDRS Chart, including those that are presumed to be readable due to being larger than the smallest line that was read entirely. This includes letters presumed readable at 1m distance. ">
-					comment = <"Typically in study settings, this score describes either the number of optotypes identified (letters read): 
+					comment = <"Commonly used in study settings. This score describes either the number of optotypes identified (letters read): 
 1. Out of 30 at 1m distance. 
 Or
 2. Out of 70 at 4m distance. In which case the 30 letters from the 1m distance are added to the result as they are presumed readable.
@@ -1811,7 +1811,7 @@ When M Notation is used, the nominator is also the real testing distance. (en)">
 				["at0356"] = <
 					text = <"*ETDRS letter score (en)">
 					description = <"*The number of optotypes correctly identified by the patient on a logMAR/ETDRS Chart, including those that are presumed to be readable due to being larger than the smallest line that was read entirely. This includes letters presumed readable at 1m distance.  (en)">
-					comment = <"*Typically in study settings, this score describes either the number of optotypes identified (letters read): 
+					comment = <"*Commonly used in study settings. This score describes either the number of optotypes identified (letters read): 
 1. Out of 30 at 1m distance. 
 Or
 2. Out of 70 at 4m distance. In which case the 30 letters from the 1m distance are added to the result as they are presumed readable.
@@ -2511,7 +2511,7 @@ When M Notation is used, the nominator is also the real testing distance. (en)">
 				["at0356"] = <
 					text = <"*ETDRS letter score (en)">
 					description = <"*The number of optotypes correctly identified by the patient on a logMAR/ETDRS Chart, including those that are presumed to be readable due to being larger than the smallest line that was read entirely. This includes letters presumed readable at 1m distance.  (en)">
-					comment = <"*Typically in study settings, this score describes either the number of optotypes identified (letters read): 
+					comment = <"*Commonly used in study settings. This score describes either the number of optotypes identified (letters read): 
 1. Out of 30 at 1m distance. 
 Or
 2. Out of 70 at 4m distance. In which case the 30 letters from the 1m distance are added to the result as they are presumed readable.
