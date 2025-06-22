@@ -116,14 +116,14 @@ American Academy Of Ophthalmology (Author), Fred M. Wilson II (Editor), MD (Edit
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"34d596cb1c4d54d52890d821191ea71e">
+		["MD5-CAM-1.0.1"] = <"e4d239631e62d0d11fb18cd8ee03fea0">
 		["build_uid"] = <"cd121fe7-8675-4514-a020-87bf81a809c8">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
 	>
 
 definition
-	OBSERVATION[at0000] matches {    -- Visual acuity test result
+	OBSERVATION[at0000] matches {    -- Visual acuity test
 		data matches {
 			HISTORY[at0001] matches {    -- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -603,7 +603,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Visual acuity test result">
+					text = <"Visual acuity test">
 					description = <"A test to quantify an individual's ability to resolve small objects as a measure of the clarity or sharpness of vision.">
 				>
 				["at0001"] = <
@@ -1303,7 +1303,7 @@ Note that this is not exclusive of devices that are not corrective, such as defo
 		["es-cl"] = <
 			items = <
 				["at0000"] = <
-					text = <"*Visual acuity test result(en)">
+					text = <"*Visual acuity test (en)">
 					description = <"*A test to quantify an individual's ability to resolve small objects as a measure of the clarity or sharpness of vision. (en)">
 				>
 				["at0001"] = <
@@ -2003,7 +2003,7 @@ Note that this is not exclusive of devices that are not corrective, such as defo
 		["nb"] = <
 			items = <
 				["at0000"] = <
-					text = <"Skarpsyn (visus)">
+					text = <"*Visual acuity test (en)">
 					description = <"*A test to quantify an individual's ability to resolve small objects as a measure of the clarity or sharpness of vision. (en)">
 				>
 				["at0001"] = <
