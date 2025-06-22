@@ -116,7 +116,7 @@ American Academy Of Ophthalmology (Author), Fred M. Wilson II (Editor), MD (Edit
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"e424d6f0d0642214c82b4f9a1800632a">
+		["MD5-CAM-1.0.1"] = <"537ac8219b5f78a6c545512618647416">
 		["build_uid"] = <"cd121fe7-8675-4514-a020-87bf81a809c8">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -297,9 +297,8 @@ definition
 						state matches {
 							ITEM_TREE[at0041] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0081] occurrences matches {0..1} matches {    -- Testing distance
+									ELEMENT[at0081] occurrences matches {0..1} matches {    -- Testing distance category
 										value matches {
-											DV_QUANTITY matches {*}
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
@@ -308,6 +307,11 @@ definition
 													at0225]    -- Far
 												}
 											}
+										}
+									}
+									ELEMENT[at0412] occurrences matches {0..1} matches {    -- Testing distance
+										value matches {
+											DV_QUANTITY matches {*}
 										}
 									}
 									ELEMENT[at0226] occurrences matches {0..1} matches {    -- General method
@@ -384,14 +388,15 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0252] occurrences matches {0..1} matches {    -- Optotype presentation modifiers
+									ELEMENT[at0252] occurrences matches {0..*} matches {    -- Optotype presentation modifiers
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
 													at0253,    -- Single Optotype Presentation
 													at0254,    -- Crowded Optotype Presentation
-													at0261]    -- Line Optotype Presentation
+													at0261,    -- Line Optotype Presentation
+													at0413]    -- Uncrowded Optotype Presentation
 												}
 											}
 										}
@@ -631,7 +636,7 @@ ontology
 				>
 				["at0021"] = <
 					text = <"Optotype">
-					description = <"The style of chart optotype used to assess visual acuity.">
+					description = <"The type of visual acuity chart symbol used to assess visual acuity.">
 				>
 				["at0022"] = <
 					text = <"Chart scoring algorithm">
@@ -639,7 +644,7 @@ ontology
 				>
 				["at0023"] = <
 					text = <"Chart or card type">
-					description = <"The charting method used to measure visual acuity.">
+					description = <"The specific  chart or card method used to measure visual acuity.">
 				>
 				["at0025"] = <
 					text = <"Stimulus device details">
@@ -664,8 +669,9 @@ ontology
 					description = <"Details of the lens in front of right eye.">
 				>
 				["at0081"] = <
-					text = <"Testing distance">
-					description = <"The distance at which the subject's visual acuity was measured.">
+					text = <"Testing distance category">
+					description = <"An ordinal measure of testing distance">
+					comment = <"Ideally to be used in conjunction with the quantitative element for testing distance. ">
 				>
 				["at0082"] = <
 					text = <"logMar chart">
@@ -901,7 +907,7 @@ May include actions aiming improve the patient's ability to participate such as 
 				>
 				["at0226"] = <
 					text = <"General method">
-					description = <"">
+					description = <"A general categorization of testing methods.">
 				>
 				["at0227"] = <
 					text = <"Laser Interferometer">
@@ -985,15 +991,16 @@ May include actions aiming improve the patient's ability to participate such as 
 				>
 				["at0252"] = <
 					text = <"Optotype presentation modifiers">
-					description = <"">
+					description = <"Modifications of how optotypes are displayed">
+					comment = <"Differentiating crowded from uncrowded optotypes is especially relevant in children and those with a suspicion of Amblyopia.">
 				>
 				["at0253"] = <
 					text = <"Single Optotype Presentation">
-					description = <"A single Optotype at a time was shown to the subject.">
+					description = <"A single optotype at a time was displayed.">
 				>
 				["at0254"] = <
 					text = <"Crowded Optotype Presentation">
-					description = <"Crowded Optotypes were shown to the subject.">
+					description = <"Crowded ptotypes were displayed.">
 				>
 				["at0256"] = <
 					text = <"Ambient lighting">
@@ -1006,7 +1013,7 @@ May include actions aiming improve the patient's ability to participate such as 
 				>
 				["at0261"] = <
 					text = <"Line Optotype Presentation">
-					description = <"A whole line of optotypes of the same size were shown to the subject at the same time.">
+					description = <"A whole line of optotypes of the same size were displayed at the same time.">
 				>
 				["at0262"] = <
 					text = <"Aided by">
@@ -1114,11 +1121,14 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0357"] = <
 					text = <"Derived ETDRS letter score result">
-					description = <"The number of optotypes correctly identified by the patient on the chart, based on the definition on the ETDRS study. ">
-					comment = <"Used in study settings, this score describes either the number of optotypes identified (letters read): 
+					description = <"The number of optotypes correctly identified by the patient on a logMAR/ETDRS Chart, including those that are presumed to be readable due to being larger than the smallest line that was read entirely. This includes letters presumed readable at 1m distance. ">
+					comment = <"Typically in study settings, this score describes either the number of optotypes identified (letters read): 
 1. Out of 30 at 1m distance. 
 Or
-2. Out of 70 at 4m distance. In which case the 30 letters from the 1m distance are added to the result. ">
+2. Out of 70 at 4m distance. In which case the 30 letters from the 1m distance are added to the result as they are presumed readable.
+
+Typically, an ETDRS letter score of 85 is equivalent to 20/20, 1.0 decimal, 0.0 logMAR. 
+Conversion of this notation requires precise understanding of testing procedures and intended meaning.  ">
 				>
 				["at0363"] = <
 					text = <"Best corrected visual acuity definition">
@@ -1270,6 +1280,14 @@ Or
 					text = <"partial">
 					description = <"Some symbols were not read correctly in the smallest line that was scored as being successully read, which is not unusual as the line being scored as correct requires 50 or 60% of symbols being identified correctly. Not actually part of line-based scoring, and a bit controversial but commonly used anyway.">
 				>
+				["at0412"] = <
+					text = <"Testing distance">
+					description = <"The distance at which the subject's visual acuity was measured.">
+				>
+				["at0413"] = <
+					text = <"Uncrowded Optotype Presentation">
+					description = <"Uncrowded optotypes were displayed.">
+				>
 			>
 		>
 		["es-cl"] = <
@@ -1309,7 +1327,7 @@ Or
 				>
 				["at0021"] = <
 					text = <"*Optotype (en)">
-					description = <"*The style of chart optotype used to assess visual acuity.(en)">
+					description = <"*The type of visual acuity chart symbol used to assess visual acuity. (en)">
 				>
 				["at0022"] = <
 					text = <"*Chart scoring algorithm (en)">
@@ -1317,7 +1335,7 @@ Or
 				>
 				["at0023"] = <
 					text = <"*Chart or card type (en)">
-					description = <"*The charting method used to measure visual acuity.(en)">
+					description = <"*The specific  chart or card method used to measure visual acuity. (en)">
 				>
 				["at0025"] = <
 					text = <"*Stimulus device details (en)">
@@ -1342,8 +1360,9 @@ Or
 					description = <"*Details of the refraction applied to each eye.(en)">
 				>
 				["at0081"] = <
-					text = <"*Testing distance (en)">
-					description = <"*The distance at which the subject's visual acuity was measured.(en)">
+					text = <"*Testing distance category (en)">
+					description = <"*An ordinal measure of testing distance (en)">
+					comment = <"*Ideally to be used in conjunction with the quantitative element for testing distance.  (en)">
 				>
 				["at0082"] = <
 					text = <"*logMar chart(en)">
@@ -1579,7 +1598,7 @@ May include actions aiming improve the patient's ability to participate such as 
 				>
 				["at0226"] = <
 					text = <"*General method (en)">
-					description = <"">
+					description = <"*A general categorization of testing methods. (en)">
 				>
 				["at0227"] = <
 					text = <"*Laser Interferometer (en)">
@@ -1663,15 +1682,16 @@ May include actions aiming improve the patient's ability to participate such as 
 				>
 				["at0252"] = <
 					text = <"*Optotype presentation modifiers (en)">
-					description = <"">
+					description = <"*Modifications of how optotypes are displayed (en)">
+					comment = <"*Differentiating crowded from uncrowded optotypes is especially relevant in children and those with a suspicion of Amblyopia. (en)">
 				>
 				["at0253"] = <
 					text = <"*Single Optotype Presentation (en)">
-					description = <"*A single Optotype at a time was shown to the subject (en)">
+					description = <"*A single optotype at a time was displayed. (en)">
 				>
 				["at0254"] = <
 					text = <"*Crowded Optotype Presentation (en)">
-					description = <"*Crowded Optotypes were shown to the subject (en)">
+					description = <"*Crowded ptotypes were displayed. (en)">
 				>
 				["at0256"] = <
 					text = <"*Ambient lighting (en)">
@@ -1684,7 +1704,7 @@ May include actions aiming improve the patient's ability to participate such as 
 				>
 				["at0261"] = <
 					text = <"*Line Optotype Presentation (en)">
-					description = <"*A whole line of optotypes of the same size were shown to the subject at the same time (en)">
+					description = <"*A whole line of optotypes of the same size were displayed at the same time. (en)">
 				>
 				["at0262"] = <
 					text = <"*Aided by (en)">
@@ -1792,11 +1812,14 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0357"] = <
 					text = <"*Derived ETDRS letter score result (en)">
-					description = <"*The number of optotypes correctly identified by the patient on the chart, based on the definition on the ETDRS study.  (en)">
-					comment = <"*Used in study settings, this score describes either the number of optotypes identified (letters read): 
+					description = <"*The number of optotypes correctly identified by the patient on a logMAR/ETDRS Chart, including those that are presumed to be readable due to being larger than the smallest line that was read entirely. This includes letters presumed readable at 1m distance.  (en)">
+					comment = <"*Typically in study settings, this score describes either the number of optotypes identified (letters read): 
 1. Out of 30 at 1m distance. 
 Or
-2. Out of 70 at 4m distance. In which case the 30 letters from the 1m distance are added to the result.  (en)">
+2. Out of 70 at 4m distance. In which case the 30 letters from the 1m distance are added to the result as they are presumed readable.
+
+Typically, an ETDRS letter score of 85 is equivalent to 20/20, 1.0 decimal, 0.0 logMAR. 
+Conversion of this notation requires precise understanding of testing procedures and intended meaning.   (en)">
 				>
 				["at0363"] = <
 					text = <"*Best corrected visual acuity definition (en)">
@@ -1948,6 +1971,14 @@ Or
 					text = <"*partial (en)">
 					description = <"*Some symbols were not read correctly in the smallest line that was scored as being successully read, which is not unusual as the line being scored as correct requires 50 or 60% of symbols being identified correctly. Not actually part of line-based scoring, and a bit controversial but commonly used anyway. (en)">
 				>
+				["at0412"] = <
+					text = <"*Testing distance (en)">
+					description = <"*The distance at which the subject's visual acuity was measured. (en)">
+				>
+				["at0413"] = <
+					text = <"*Uncrowded Optotype Presentation (en)">
+					description = <"*Uncrowded optotypes were displayed. (en)">
+				>
 			>
 		>
 		["nb"] = <
@@ -1987,7 +2018,7 @@ Or
 				>
 				["at0021"] = <
 					text = <"*Optotype (en)">
-					description = <"Tavlens optotype som ble brukt for å måle visus.">
+					description = <"*The type of visual acuity chart symbol used to assess visual acuity. (en)">
 				>
 				["at0022"] = <
 					text = <"*Chart scoring algorithm (en)">
@@ -1995,7 +2026,7 @@ Or
 				>
 				["at0023"] = <
 					text = <"*Chart or card type (en)">
-					description = <"Type visustavle som ble benyttet.">
+					description = <"*The specific  chart or card method used to measure visual acuity. (en)">
 				>
 				["at0025"] = <
 					text = <"*Stimulus device details (en)">
@@ -2020,8 +2051,9 @@ Or
 					description = <"Detaljert beskrivelse av refraksjonen for hvert øye.">
 				>
 				["at0081"] = <
-					text = <"*Testing distance (en)">
-					description = <"Avstanden som visus ble testet på.">
+					text = <"*Testing distance category (en)">
+					description = <"*An ordinal measure of testing distance (en)">
+					comment = <"*Ideally to be used in conjunction with the quantitative element for testing distance.  (en)">
 				>
 				["at0082"] = <
 					text = <"logMar">
@@ -2257,7 +2289,7 @@ May include actions aiming improve the patient's ability to participate such as 
 				>
 				["at0226"] = <
 					text = <"*General method (en)">
-					description = <"">
+					description = <"*A general categorization of testing methods. (en)">
 				>
 				["at0227"] = <
 					text = <"*Laser Interferometer (en)">
@@ -2341,15 +2373,16 @@ May include actions aiming improve the patient's ability to participate such as 
 				>
 				["at0252"] = <
 					text = <"*Optotype presentation modifiers (en)">
-					description = <"">
+					description = <"*Modifications of how optotypes are displayed (en)">
+					comment = <"*Differentiating crowded from uncrowded optotypes is especially relevant in children and those with a suspicion of Amblyopia. (en)">
 				>
 				["at0253"] = <
 					text = <"*Single Optotype Presentation (en)">
-					description = <"*A single Optotype at a time was shown to the subject (en)">
+					description = <"*A single optotype at a time was displayed. (en)">
 				>
 				["at0254"] = <
 					text = <"*Crowded Optotype Presentation (en)">
-					description = <"*Crowded Optotypes were shown to the subject (en)">
+					description = <"*Crowded ptotypes were displayed. (en)">
 				>
 				["at0256"] = <
 					text = <"*Ambient lighting (en)">
@@ -2362,7 +2395,7 @@ May include actions aiming improve the patient's ability to participate such as 
 				>
 				["at0261"] = <
 					text = <"*Line Optotype Presentation (en)">
-					description = <"*A whole line of optotypes of the same size were shown to the subject at the same time (en)">
+					description = <"*A whole line of optotypes of the same size were displayed at the same time. (en)">
 				>
 				["at0262"] = <
 					text = <"*Aided by (en)">
@@ -2470,11 +2503,14 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0357"] = <
 					text = <"*Derived ETDRS letter score result (en)">
-					description = <"*The number of optotypes correctly identified by the patient on the chart, based on the definition on the ETDRS study.  (en)">
-					comment = <"*Used in study settings, this score describes either the number of optotypes identified (letters read): 
+					description = <"*The number of optotypes correctly identified by the patient on a logMAR/ETDRS Chart, including those that are presumed to be readable due to being larger than the smallest line that was read entirely. This includes letters presumed readable at 1m distance.  (en)">
+					comment = <"*Typically in study settings, this score describes either the number of optotypes identified (letters read): 
 1. Out of 30 at 1m distance. 
 Or
-2. Out of 70 at 4m distance. In which case the 30 letters from the 1m distance are added to the result.  (en)">
+2. Out of 70 at 4m distance. In which case the 30 letters from the 1m distance are added to the result as they are presumed readable.
+
+Typically, an ETDRS letter score of 85 is equivalent to 20/20, 1.0 decimal, 0.0 logMAR. 
+Conversion of this notation requires precise understanding of testing procedures and intended meaning.   (en)">
 				>
 				["at0363"] = <
 					text = <"*Best corrected visual acuity definition (en)">
@@ -2625,6 +2661,14 @@ Or
 				["at0411"] = <
 					text = <"*partial (en)">
 					description = <"*Some symbols were not read correctly in the smallest line that was scored as being successully read, which is not unusual as the line being scored as correct requires 50 or 60% of symbols being identified correctly. Not actually part of line-based scoring, and a bit controversial but commonly used anyway. (en)">
+				>
+				["at0412"] = <
+					text = <"*Testing distance (en)">
+					description = <"*The distance at which the subject's visual acuity was measured. (en)">
+				>
+				["at0413"] = <
+					text = <"*Uncrowded Optotype Presentation (en)">
+					description = <"*Uncrowded optotypes were displayed. (en)">
 				>
 			>
 		>
