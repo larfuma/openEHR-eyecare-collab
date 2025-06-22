@@ -116,7 +116,7 @@ American Academy Of Ophthalmology (Author), Fred M. Wilson II (Editor), MD (Edit
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"537ac8219b5f78a6c545512618647416">
+		["MD5-CAM-1.0.1"] = <"34d596cb1c4d54d52890d821191ea71e">
 		["build_uid"] = <"cd121fe7-8675-4514-a020-87bf81a809c8">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -426,12 +426,13 @@ definition
 												defining_code matches {
 													[local::
 													at0396,    -- Glare Light
-													at0397]    -- Brightness Acuity Test
+													at0397,    -- Brightness Acuity Test
+													at0414]    -- None
 												}
 											}
 										}
 									}
-									ELEMENT[at0393] occurrences matches {0..1} matches {    -- Ancillary lighting intensity
+									ELEMENT[at0393] occurrences matches {0..1} matches {    -- Ancillary lighting intensity setting
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::755]>
@@ -457,7 +458,7 @@ definition
 									}
 									CLUSTER[at0262] occurrences matches {0..*} matches {    -- Aided by
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0373] occurrences matches {0..1} matches {    -- Type of aid
+											ELEMENT[at0373] occurrences matches {0..1} matches {    -- Type of device
 												value matches {
 													DV_CODED_TEXT matches {
 														defining_code matches {
@@ -1087,7 +1088,7 @@ When M Notation is used, the nominator is also the real testing distance.">
 				>
 				["at0332"] = <
 					text = <"Description of derived results calculation">
-					description = <"A Text description used to describe the manner in which the derived results were determined.">
+					description = <"A text description used to describe the manner in which the derived results were determined.">
 				>
 				["at0333"] = <
 					text = <"Interpretation">
@@ -1132,11 +1133,13 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0363"] = <
 					text = <"Best corrected visual acuity definition">
-					description = <"">
+					description = <"The definition of BCVA that applies to the comparative classification element">
+					comment = <"Ideally, this would include a description of the process how the lens powers of the best correction are determined. ">
 				>
 				["at0365"] = <
 					text = <"Best recorded visual acuity definition">
-					description = <"">
+					description = <"The definition of BRVA that applies to the comparative classification element. ">
+					comment = <"This is typically a rectrospective comparison of visual acuity measures of the same eye on the same day or the same encounter. Ideally, this would include a description of the the comparison is performed.  Specifically, whether measurements aided by pinhole occluder were excluded or not. ">
 				>
 				["at0370"] = <
 					text = <"Comparative classification">
@@ -1152,10 +1155,11 @@ Conversion of this notation requires precise understanding of testing procedures
 					description = <"This result is classified as a Best Recorded Visual Acuity.">
 				>
 				["at0373"] = <
-					text = <"Type of aid">
-					description = <"The type of corrective lens or object that is positioned in front of one of the eyes.
+					text = <"Type of device">
+					description = <"The type of lens or object that is positioned in front of one of the eyes.
 ">
-					comment = <"Which eye it is in front of depends  on the value of the \"In front of which eye\" element.">
+					comment = <"Which eye it is in front of depends on the value of the \"In front of which eye\" element.
+Note that this is not exclusive of devices that are not corrective, such as defocus or fogging lenses. ">
 				>
 				["at0374"] = <
 					text = <"Autorefraction-based lenses">
@@ -1215,11 +1219,13 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0392"] = <
 					text = <"Type of ancillary lighting method">
-					description = <"">
+					description = <"Additional light sources used in addition to the typical room, stimulus or chart lighting. ">
+					comment = <"This does not include the room lighting and the typical lighting of the stimulus. Optotype Projectors, Digital Chart Displays and Lightboxes all contain light sources, but these are not considered \"ancillary\". ">
 				>
 				["at0393"] = <
-					text = <"Ancillary lighting intensity">
-					description = <"">
+					text = <"Ancillary lighting intensity setting">
+					description = <"The light intensity setting of the ancillary lighting source">
+					comment = <"This does not refer to a physical measure of light intensity, but rather the setting used to produce it, which may be on an arbitratry scale specific to the device used. ">
 				>
 				["at0395"] = <
 					text = <"Ancillary lighting device details">
@@ -1231,7 +1237,7 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0397"] = <
 					text = <"Brightness Acuity Test">
-					description = <"A handheld fanzfeld illumination device was used to simulate environmental brightness.">
+					description = <"A handheld Ganzfeld illumination device was used to simulate environmental brightness.">
 				>
 				["at0398"] = <
 					text = <"Low">
@@ -1287,6 +1293,10 @@ Conversion of this notation requires precise understanding of testing procedures
 				["at0413"] = <
 					text = <"Uncrowded Optotype Presentation">
 					description = <"Uncrowded optotypes were displayed.">
+				>
+				["at0414"] = <
+					text = <"None">
+					description = <"No ancillary lighting was used.">
 				>
 			>
 		>
@@ -1778,7 +1788,7 @@ When M Notation is used, the nominator is also the real testing distance. (en)">
 				>
 				["at0332"] = <
 					text = <"*Description of derived results calculation (en)">
-					description = <"*A Text description used to describe the manner in which the derived results were determined. (en)">
+					description = <"*A text description used to describe the manner in which the derived results were determined. (en)">
 				>
 				["at0333"] = <
 					text = <"*Interpretation (en)">
@@ -1823,11 +1833,13 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0363"] = <
 					text = <"*Best corrected visual acuity definition (en)">
-					description = <"">
+					description = <"*The definition of BCVA that applies to the comparative classification element (en)">
+					comment = <"*Ideally, this would include a description of the process how the lens powers of the best correction are determined.  (en)">
 				>
 				["at0365"] = <
 					text = <"*Best recorded visual acuity definition (en)">
-					description = <"">
+					description = <"*The definition of BRVA that applies to the comparative classification element.  (en)">
+					comment = <"*This is typically a rectrospective comparison of visual acuity measures of the same eye on the same day or the same encounter. Ideally, this would include a description of the the comparison is performed.  Specifically, whether measurements aided by pinhole occluder were excluded or not.  (en)">
 				>
 				["at0370"] = <
 					text = <"*Comparative classification (en)">
@@ -1843,10 +1855,11 @@ Conversion of this notation requires precise understanding of testing procedures
 					description = <"*This result is classified as a Best Recorded Visual Acuity. (en)">
 				>
 				["at0373"] = <
-					text = <"*Type of aid (en)">
-					description = <"*The type of corrective lens or object that is positioned in front of one of the eyes.
+					text = <"*Type of device (en)">
+					description = <"*The type of lens or object that is positioned in front of one of the eyes.
  (en)">
-					comment = <"*Which eye it is in front of depends  on the value of the \"In front of which eye\" element. (en)">
+					comment = <"*Which eye it is in front of depends on the value of the \"In front of which eye\" element.
+Note that this is not exclusive of devices that are not corrective, such as defocus or fogging lenses.  (en)">
 				>
 				["at0374"] = <
 					text = <"*Autorefraction-based lenses (en)">
@@ -1906,11 +1919,13 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0392"] = <
 					text = <"*Type of ancillary lighting method (en)">
-					description = <"">
+					description = <"*Additional light sources used in addition to the typical room, stimulus or chart lighting.  (en)">
+					comment = <"*This does not include the room lighting and the typical lighting of the stimulus. Optotype Projectors, Digital Chart Displays and Lightboxes all contain light sources, but these are not considered \"ancillary\".  (en)">
 				>
 				["at0393"] = <
-					text = <"*Ancillary lighting intensity (en)">
-					description = <"">
+					text = <"*Ancillary lighting intensity setting (en)">
+					description = <"*The light intensity setting of the ancillary lighting source (en)">
+					comment = <"*This does not refer to a physical measure of light intensity, but rather the setting used to produce it, which may be on an arbitratry scale specific to the device used.  (en)">
 				>
 				["at0395"] = <
 					text = <"*Ancillary lighting device details (en)">
@@ -1922,7 +1937,7 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0397"] = <
 					text = <"*Brightness Acuity Test (en)">
-					description = <"*A handheld fanzfeld illumination device was used to simulate environmental brightness. (en)">
+					description = <"*A handheld Ganzfeld illumination device was used to simulate environmental brightness. (en)">
 				>
 				["at0398"] = <
 					text = <"*Low (en)">
@@ -1978,6 +1993,10 @@ Conversion of this notation requires precise understanding of testing procedures
 				["at0413"] = <
 					text = <"*Uncrowded Optotype Presentation (en)">
 					description = <"*Uncrowded optotypes were displayed. (en)">
+				>
+				["at0414"] = <
+					text = <"*None (en)">
+					description = <"*No ancillary lighting was used. (en)">
 				>
 			>
 		>
@@ -2469,7 +2488,7 @@ When M Notation is used, the nominator is also the real testing distance. (en)">
 				>
 				["at0332"] = <
 					text = <"*Description of derived results calculation (en)">
-					description = <"*A Text description used to describe the manner in which the derived results were determined. (en)">
+					description = <"*A text description used to describe the manner in which the derived results were determined. (en)">
 				>
 				["at0333"] = <
 					text = <"*Interpretation (en)">
@@ -2514,11 +2533,13 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0363"] = <
 					text = <"*Best corrected visual acuity definition (en)">
-					description = <"">
+					description = <"*The definition of BCVA that applies to the comparative classification element (en)">
+					comment = <"*Ideally, this would include a description of the process how the lens powers of the best correction are determined.  (en)">
 				>
 				["at0365"] = <
 					text = <"*Best recorded visual acuity definition (en)">
-					description = <"">
+					description = <"*The definition of BRVA that applies to the comparative classification element.  (en)">
+					comment = <"*This is typically a rectrospective comparison of visual acuity measures of the same eye on the same day or the same encounter. Ideally, this would include a description of the the comparison is performed.  Specifically, whether measurements aided by pinhole occluder were excluded or not.  (en)">
 				>
 				["at0370"] = <
 					text = <"*Comparative classification (en)">
@@ -2534,10 +2555,11 @@ Conversion of this notation requires precise understanding of testing procedures
 					description = <"*This result is classified as a Best Recorded Visual Acuity. (en)">
 				>
 				["at0373"] = <
-					text = <"*Type of aid (en)">
-					description = <"*The type of corrective lens or object that is positioned in front of one of the eyes.
+					text = <"*Type of device (en)">
+					description = <"*The type of lens or object that is positioned in front of one of the eyes.
  (en)">
-					comment = <"*Which eye it is in front of depends  on the value of the \"In front of which eye\" element. (en)">
+					comment = <"*Which eye it is in front of depends on the value of the \"In front of which eye\" element.
+Note that this is not exclusive of devices that are not corrective, such as defocus or fogging lenses.  (en)">
 				>
 				["at0374"] = <
 					text = <"*Autorefraction-based lenses (en)">
@@ -2597,11 +2619,13 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0392"] = <
 					text = <"*Type of ancillary lighting method (en)">
-					description = <"">
+					description = <"*Additional light sources used in addition to the typical room, stimulus or chart lighting.  (en)">
+					comment = <"*This does not include the room lighting and the typical lighting of the stimulus. Optotype Projectors, Digital Chart Displays and Lightboxes all contain light sources, but these are not considered \"ancillary\".  (en)">
 				>
 				["at0393"] = <
-					text = <"*Ancillary lighting intensity (en)">
-					description = <"">
+					text = <"*Ancillary lighting intensity setting (en)">
+					description = <"*The light intensity setting of the ancillary lighting source (en)">
+					comment = <"*This does not refer to a physical measure of light intensity, but rather the setting used to produce it, which may be on an arbitratry scale specific to the device used.  (en)">
 				>
 				["at0395"] = <
 					text = <"*Ancillary lighting device details (en)">
@@ -2613,7 +2637,7 @@ Conversion of this notation requires precise understanding of testing procedures
 				>
 				["at0397"] = <
 					text = <"*Brightness Acuity Test (en)">
-					description = <"*A handheld fanzfeld illumination device was used to simulate environmental brightness. (en)">
+					description = <"*A handheld Ganzfeld illumination device was used to simulate environmental brightness. (en)">
 				>
 				["at0398"] = <
 					text = <"*Low (en)">
@@ -2669,6 +2693,10 @@ Conversion of this notation requires precise understanding of testing procedures
 				["at0413"] = <
 					text = <"*Uncrowded Optotype Presentation (en)">
 					description = <"*Uncrowded optotypes were displayed. (en)">
+				>
+				["at0414"] = <
+					text = <"*None (en)">
+					description = <"*No ancillary lighting was used. (en)">
 				>
 			>
 		>
