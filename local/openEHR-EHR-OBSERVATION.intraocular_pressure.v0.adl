@@ -15,14 +15,14 @@ description
 		["email"] = <"mail@gustavobacelar.com">
 	>
 	lifecycle_state = <"in_development">
-	other_contributors = <"Ian McNicoll, freshEHR Informatics, UK ","Heather Leslie, Atomica Informatics, Australia","Aitor Eguzkitza, UPNA (Public University of Navarre) - CHN (Complejo Hospitalario de Navarra), Spain">
+	other_contributors = <"Ian McNicoll, freshEHR Informatics, UK","Heather Leslie, Atomica Informatics, Australia","Aitor Eguzkitza, UPNA (Public University of Navarre) - CHN (Complejo Hospitalario de Navarra), Spain","Lars Fuhrmann, Deutsche Ophthalmologische Gesellschaft, Germany">
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the measurement of intraocular pressure in a single eye.">
-			keywords = <"IOP","toniometry","glaucoma","eye">
+			purpose = <"To record the intraocular pressure of the eye, or eyes, of an individual.">
+			keywords = <"IOP","tonometry","glaucoma","eye","eye pressure">
 			copyright = <"© openEHR Foundation">
-			use = <"Use to record the measurement of intraocular pressure in a single eye. Record the details of each eye using a separate data instance from this archetype.
+			use = <"Use to record the measurement of intraocular pressure in a single eye per event. Record the details of each eye using a seperate events. Use  seperate Instances of the archetype where different test protocols were used.
 
 The CLUSTER.exclusion_exam archetype can be nested within the 'Measurement not done' SLOT to optionally record explicit details about the measurement not being performed.">
 		>
@@ -43,13 +43,14 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"81545BD8ABC02DEB2F6EC4C6FC79ACAF">
+		["MD5-CAM-1.0.1"] = <"c2f9d8e39413f4b254d4f201c0ccb592">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
+		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
 	>
 
 definition
-	OBSERVATION[at0000] matches {    -- Intraocular pressure test result
+	OBSERVATION[at0000] matches {    -- Intraocular pressure
 		data matches {
 			HISTORY[at0001] matches {    -- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -57,7 +58,7 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0057] occurrences matches {0..1} matches {    -- Eye examined
+									ELEMENT[at0057] matches {    -- Eye examined
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
@@ -75,7 +76,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm[Hg]">
-														magnitude = <|0.0..90.0|>
+														magnitude = <|0.0..20000.0|>
 														precision = <|1|>
 													>
 												>
@@ -153,11 +154,14 @@ definition
 									at0047,    -- Goldmann
 									at0048,    -- Perkins
 									at0049,    -- Tono-Pen
-									at0050,    -- Icare (Rebound)
+									at0050,    -- Rebound
 									at0051,    -- Dynamic Contour
-									at0052,    -- Ocular Response Analyzer
-									at0053,    -- TGDc-01
-									at0066]    -- Non-contact tonometry
+									at0052,    -- IOPcc - Corneal-Compensated Ocular Response Analysis
+									at0053,    -- Transpalpebral tonometer
+									at0066,    -- Non-contact tonometry
+									at0083,    -- Implanted pressure sensor
+									at0084,    -- IOPg - Goldmann-Corellated Ocular Reponse Analysis
+									at0085]    -- Palpation
 								}
 							}
 							DV_TEXT matches {*}
@@ -177,11 +181,12 @@ definition
 	}
 
 ontology
+	terminologies_available = <"LOINC","SNOMED-CT">
 	term_definitions = <
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Intraocular pressure test result">
+					text = <"Intraocular pressure">
 					description = <"The local measurement of intraocular pressure, most commonly using a tonometry device.">
 				>
 				["at0001"] = <
@@ -210,7 +215,7 @@ ontology
 				>
 				["at0047"] = <
 					text = <"Goldmann">
-					description = <"Goldmann tonometry.">
+					description = <"Goldmann applanation tonometry.">
 				>
 				["at0048"] = <
 					text = <"Perkins">
@@ -218,23 +223,23 @@ ontology
 				>
 				["at0049"] = <
 					text = <"Tono-Pen">
-					description = <"Tono-Pen tonometry.">
+					description = <"Tono-Pen applanationtonometry.">
 				>
 				["at0050"] = <
-					text = <"Icare (Rebound)">
-					description = <"Icare (Rebound) tonometry.">
+					text = <"Rebound">
+					description = <"Rebound tonometry, including iCare® devices.">
 				>
 				["at0051"] = <
 					text = <"Dynamic Contour">
-					description = <"Dynamic Contour tonometry.">
+					description = <"Dynamic contour tonometry including PASCAL® devices.">
 				>
 				["at0052"] = <
-					text = <"Ocular Response Analyzer">
-					description = <"Ocular Response Analyzer.">
+					text = <"IOPcc - Corneal-Compensated Ocular Response Analysis">
+					description = <"Ocular Response Analyzer® using the corneal-compensated method.">
 				>
 				["at0053"] = <
-					text = <"TGDc-01">
-					description = <"A TGDc-01 device was used to perform the test.">
+					text = <"Transpalpebral tonometer">
+					description = <"Tonometry through an eyelid, using a device such as the TGDc-01.">
 				>
 				["at0055"] = <
 					text = <"Device details">
@@ -297,6 +302,32 @@ ontology
 					text = <"Correction description">
 					description = <"Narrative description about the method used to correct the original intraocular pressure measurement.">
 				>
+				["at0083"] = <
+					text = <"Implanted pressure sensor">
+					description = <"An Implanted Pressure sensor was used to perform the test">
+				>
+				["at0084"] = <
+					text = <"IOPg - Goldmann-Corellated Ocular Reponse Analysis">
+					description = <"Ocular Response Analyzer® using the goldmann-corellated method.">
+				>
+				["at0085"] = <
+					text = <"Palpation">
+					description = <"The intraocular pressure was estimated by palpation using the examiners fingers.">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["LOINC"] = <
+			items = <
+				["at0000"] = <[LOINC::56844-4]>
+			>
+		>
+		["SNOMED-CT"] = <
+			items = <
+				["at0000"] = <[SNOMED-CT::302157000]>
+				["at0058"] = <[SNOMED-CT::1290031003]>
+				["at0059"] = <[SNOMED-CT::1290032005]>
 			>
 		>
 	>
