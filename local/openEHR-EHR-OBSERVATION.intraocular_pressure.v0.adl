@@ -43,7 +43,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"ae47068fcbd13118eb989dd09b0144b1">
+		["MD5-CAM-1.0.1"] = <"a89ccf381c1ecd319969762a4a0ada66">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -116,7 +116,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0065] occurrences matches {0..1} matches {    -- Applanation time
+									ELEMENT[at0065] occurrences matches {0..1} matches {    -- Time to first applanation
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -128,6 +128,11 @@ definition
 													>
 												>
 											>
+										}
+									}
+									ELEMENT[at0093] occurrences matches {0..1} matches {    -- Ocular response analysis waveform score
+										value matches {
+											DV_QUANTITY matches {*}
 										}
 									}
 									ELEMENT[at0061] occurrences matches {0..*} matches {    -- Clinical interpretation
@@ -154,9 +159,38 @@ definition
 						state matches {
 							ITEM_TREE[at0007] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0095] occurrences matches {0..1} matches {    -- Prism graduation mark on 43° offset mark
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::497]>
+												list = <
+													["1"] = <
+														units = <"deg">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0094] occurrences matches {0..1} matches {    -- Prism graduation mark on horizontal meridian
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::497]>
+												list = <
+													["1"] = <
+														units = <"deg">
+													>
+												>
+											>
+										}
+									}
 									ELEMENT[at0074] occurrences matches {0..*} matches {    -- Confounding factors
 										value matches {
 											DV_TEXT matches {*}
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::at0096]    -- Mydriasis
+												}
+											}
 										}
 									}
 								}
@@ -291,7 +325,7 @@ ontology
 					description = <"Additional narrative about the measurement, not captured in other fields.">
 				>
 				["at0065"] = <
-					text = <"Applanation time">
+					text = <"Time to first applanation">
 					description = <"The time taken for a non-contact tonometer to flatten the cornea, used to calculate intraocular pressure.">
 				>
 				["at0066"] = <
@@ -360,6 +394,23 @@ ontology
 					text = <"Intraocular pressure correction details">
 					description = <"">
 				>
+				["at0093"] = <
+					text = <"Ocular response analysis waveform score">
+					description = <"Waveform Score produced by the Ocular Response Analyser device.">
+					comment = <"Higher values indicate higher reliability.">
+				>
+				["at0094"] = <
+					text = <"Prism graduation mark on horizontal meridian">
+					description = <"The value of the degree of the graduation mark on the Goldmann prism probe that was aligned with the horizontal meridian mark of the probe holder at the time of measuerment. ">
+				>
+				["at0095"] = <
+					text = <"Prism graduation mark on 43° offset mark">
+					description = <"The value of the degree of the graduation mark on the Goldmann prism probe that was aligned with the horizontal meridian mark of the probe holder at the time of measuerment..">
+				>
+				["at0096"] = <
+					text = <"Mydriasis">
+					description = <"">
+				>
 			>
 		>
 	>
@@ -380,6 +431,11 @@ ontology
 				["at0051"] = <[SNOMED-CT::1286902005]>
 				["at0084"] = <[SNOMED-CT::1286913008]>
 				["at0052"] = <[SNOMED-CT::1286906008]>
+				["at0066"] = <[SNOMED-CT::389150000]>
+				["at0085"] = <[SNOMED-CT::1286917009]>
+				["at0087"] = <[SNOMED-CT::389149000]>
+				["at0086"] = <[SNOMED-CT::252804008]>
+				["at0096"] = <[SNOMED-CT::37125009]>
 			>
 		>
 	>
