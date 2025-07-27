@@ -43,7 +43,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"b7d8a6c44498ea6bf80182e0ab0dde20">
+		["MD5-CAM-1.0.1"] = <"ae47068fcbd13118eb989dd09b0144b1">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -83,33 +83,37 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0081] occurrences matches {0..1} matches {    -- Corrected pressure
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::125]>
-												list = <
-													["1"] = <
-														units = <"mm[Hg]">
-														magnitude = <|0.0..20000.0|>
-														precision = <|2|>
+									CLUSTER[at0092] occurrences matches {0..*} matches {    -- Intraocular pressure correction details
+										items cardinality matches {1..*; unordered} matches {
+											allow_archetype CLUSTER[at0091] occurrences matches {0..1} matches {    -- Central corneal thickness details
+												include
+													archetype_id/value matches {/openEHR-EHR-CLUSTER\.corneal_thickness_details\.v0/}
+											}
+											ELEMENT[at0081] occurrences matches {0..1} matches {    -- Corrected pressure
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::125]>
+														list = <
+															["1"] = <
+																units = <"mm[Hg]">
+																magnitude = <|0.0..20000.0|>
+																precision = <|2|>
+															>
+														>
 													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0082] occurrences matches {0..1} matches {    -- Correction description
-										value matches {
-											DV_TEXT matches {*}
-											DV_CODED_TEXT matches {*}
-										}
-									}
-									allow_archetype CLUSTER[at0091] occurrences matches {0..1} matches {    -- Central Corneal Thickness Details
-										include
-											archetype_id/value matches {/openEHR-EHR-CLUSTER\.corneal_thickness_details\.v0/}
-									}
-									ELEMENT[at0090] occurrences matches {0..1} matches {    -- Reference to central corneal thickness used for correction
-										value matches {
-											DV_URI matches {*}
+												}
+											}
+											ELEMENT[at0090] occurrences matches {0..1} matches {    -- Reference to central corneal thickness used for correction
+												value matches {
+													DV_URI matches {*}
+												}
+											}
+											ELEMENT[at0082] occurrences matches {0..1} matches {    -- Correction description
+												value matches {
+													DV_TEXT matches {*}
+													DV_CODED_TEXT matches {*}
+												}
+											}
 										}
 									}
 									ELEMENT[at0065] occurrences matches {0..1} matches {    -- Applanation time
@@ -349,7 +353,11 @@ ontology
 					description = <"A URI referencing a previously recorded central corneal thickness measurement.">
 				>
 				["at0091"] = <
-					text = <"Central Corneal Thickness Details">
+					text = <"Central corneal thickness details">
+					description = <"">
+				>
+				["at0092"] = <
+					text = <"Intraocular pressure correction details">
 					description = <"">
 				>
 			>
@@ -366,6 +374,12 @@ ontology
 				["at0000"] = <[SNOMED-CT::302157000]>
 				["at0058"] = <[SNOMED-CT::1290031003]>
 				["at0059"] = <[SNOMED-CT::1290032005]>
+				["at0047"] = <[SNOMED-CT::389152008]>
+				["at0048"] = <[SNOMED-CT::389151001]>
+				["at0050"] = <[SNOMED-CT::1286870002]>
+				["at0051"] = <[SNOMED-CT::1286902005]>
+				["at0084"] = <[SNOMED-CT::1286913008]>
+				["at0052"] = <[SNOMED-CT::1286906008]>
 			>
 		>
 	>
