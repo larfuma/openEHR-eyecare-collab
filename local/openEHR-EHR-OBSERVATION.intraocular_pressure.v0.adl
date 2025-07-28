@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"17e1e2bd614b66f7439ab47288577af2">
+		["MD5-CAM-1.0.1"] = <"4d582609522b26d6347ef45af55384a2">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -91,10 +91,10 @@ definition
 												defining_code matches {
 													[local::
 													at0100,    -- Completely soft (0mmHg)
-													at0101,    -- hypotensive (approx. 1-7mmHg)
-													at0102,    -- normal or near-normal (approx. 8-25mmHg)
-													at0103,    -- hypertensive (approx. 26-50mmHg)
-													at0104]    -- hard (>50mmHg)
+													at0101,    -- Hypotensive (approx. 1-7mmHg)
+													at0102,    -- Normal or near-normal (approx. 8-25mmHg)
+													at0103,    -- Hypertensive (approx. 26-50mmHg)
+													at0104]    -- Hard (>50mmHg)
 												}
 											}
 										}
@@ -451,7 +451,7 @@ ontology
 				>
 				["at0099"] = <
 					text = <"Palpatory estimation">
-					description = <"Semi-Quantitative description of the hardness of the eye based on palpation with the examiners fingers. ">
+					description = <"Semi-Quantitative description of the hardness of the eye based on palpation with the examiners fingers.">
 					comment = <"Use of this element instead of the Pressure element should be considered when the Method is palpation, as a value in mmHG may lead to an overestimation of the precision. 
 It Is sensible to display the approximately equivalent mmHG values to the users to reduce ambiguity">
 				>
@@ -460,19 +460,19 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0101"] = <
-					text = <"hypotensive (approx. 1-7mmHg)">
+					text = <"Hypotensive (approx. 1-7mmHg)">
 					description = <"">
 				>
 				["at0102"] = <
-					text = <"normal or near-normal (approx. 8-25mmHg)">
+					text = <"Normal or near-normal (approx. 8-25mmHg)">
 					description = <"">
 				>
 				["at0103"] = <
-					text = <"hypertensive (approx. 26-50mmHg)">
+					text = <"Hypertensive (approx. 26-50mmHg)">
 					description = <"">
 				>
 				["at0104"] = <
-					text = <"hard (>50mmHg)">
+					text = <"Hard (>50mmHg)">
 					description = <"">
 				>
 			>
@@ -652,7 +652,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				>
 				["at0099"] = <
 					text = <"*Palpatory estimation (en)">
-					description = <"*Semi-Quantitative description of the hardness of the eye based on palpation with the examiners fingers.  (en)">
+					description = <"*Semi-Quantitative description of the hardness of the eye based on palpation with the examiners fingers. (en)">
 					comment = <"*Use of this element instead of the Pressure element should be considered when the Method is palpation, as a value in mmHG may lead to an overestimation of the precision. 
 It Is sensible to display the approximately equivalent mmHG values to the users to reduce ambiguity (en)">
 				>
@@ -661,19 +661,19 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0101"] = <
-					text = <"*hypotensive (approx. 1-7mmHg) (en)">
+					text = <"*Hypotensive (approx. 1-7mmHg) (en)">
 					description = <"">
 				>
 				["at0102"] = <
-					text = <"*normal or near-normal (approx. 8-25mmHg) (en)">
+					text = <"*Normal or near-normal (approx. 8-25mmHg) (en)">
 					description = <"">
 				>
 				["at0103"] = <
-					text = <"*hypertensive (approx. 26-50mmHg) (en)">
+					text = <"*Hypertensive (approx. 26-50mmHg) (en)">
 					description = <"">
 				>
 				["at0104"] = <
-					text = <"*hard (>50mmHg) (en)">
+					text = <"*Hard (>50mmHg) (en)">
 					description = <"">
 				>
 			>
