@@ -116,7 +116,7 @@ American Academy Of Ophthalmology (Author), Fred M. Wilson II (Editor), MD (Edit
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"37a4bf1e9b94b0a2fd891f961a3427b8">
+		["MD5-CAM-1.0.1"] = <"4bc31d12b95df839ea7a8f56cb781582">
 		["build_uid"] = <"cd121fe7-8675-4514-a020-87bf81a809c8">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -131,7 +131,7 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0007] occurrences matches {0..1} matches {    -- Eye examined
+									ELEMENT[at0007] matches {    -- Eye examined
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
@@ -629,7 +629,7 @@ ontology
 				>
 				["at0014"] = <
 					text = <"Both eyes simultaneously">
-					description = <"Both eyes were examined simultaneously.">
+					description = <"Both eyes were examined simultaneously, reffering to a binocular vision test.">
 				>
 				["at0020"] = <
 					text = <"Tree">
@@ -1329,7 +1329,7 @@ Note that this is not exclusive of devices that are not corrective, such as defo
 				>
 				["at0014"] = <
 					text = <"*Both eyes simultaneously(en)">
-					description = <"*Both eyes were examined simultaneously.(en)">
+					description = <"*Both eyes were examined simultaneously, reffering to a binocular vision test. (en)">
 				>
 				["at0020"] = <
 					text = <"Tree">
@@ -2029,7 +2029,7 @@ Note that this is not exclusive of devices that are not corrective, such as defo
 				>
 				["at0014"] = <
 					text = <"Begge øyne">
-					description = <"Visus målt med begge øyne.">
+					description = <"*Both eyes were examined simultaneously, reffering to a binocular vision test. (en)">
 				>
 				["at0020"] = <
 					text = <"Tree">
