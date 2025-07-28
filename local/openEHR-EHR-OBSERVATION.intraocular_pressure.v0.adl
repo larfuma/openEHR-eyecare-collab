@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"d755337eec407aeee1e0400dfbe2cda4">
+		["MD5-CAM-1.0.1"] = <"17e1e2bd614b66f7439ab47288577af2">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -452,7 +452,8 @@ ontology
 				["at0099"] = <
 					text = <"Palpatory estimation">
 					description = <"Semi-Quantitative description of the hardness of the eye based on palpation with the examiners fingers. ">
-					comment = <"Use of this element instead of the Pressure element should be considered when the Method is palpation, as a value in mmHG may lead to an overestimation of the precision. ">
+					comment = <"Use of this element instead of the Pressure element should be considered when the Method is palpation, as a value in mmHG may lead to an overestimation of the precision. 
+It Is sensible to display the approximately equivalent mmHG values to the users to reduce ambiguity">
 				>
 				["at0100"] = <
 					text = <"Completely soft (0mmHg)">
@@ -652,7 +653,8 @@ ontology
 				["at0099"] = <
 					text = <"*Palpatory estimation (en)">
 					description = <"*Semi-Quantitative description of the hardness of the eye based on palpation with the examiners fingers.  (en)">
-					comment = <"*Use of this element instead of the Pressure element should be considered when the Method is palpation, as a value in mmHG may lead to an overestimation of the precision.  (en)">
+					comment = <"*Use of this element instead of the Pressure element should be considered when the Method is palpation, as a value in mmHG may lead to an overestimation of the precision. 
+It Is sensible to display the approximately equivalent mmHG values to the users to reduce ambiguity (en)">
 				>
 				["at0100"] = <
 					text = <"*Completely soft (0mmHg) (en)">
