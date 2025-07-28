@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"2a39c0c3f4ef5c430baaccac5f13f5f3">
+		["MD5-CAM-1.0.1"] = <"acf2bf123216dd76094306fb2524cf1d">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -124,10 +124,16 @@ definition
 													DV_URI matches {*}
 												}
 											}
-											ELEMENT[at0082] occurrences matches {0..1} matches {    -- Correction description
+											ELEMENT[at0082] occurrences matches {0..1} matches {    -- Type of correction
 												value matches {
 													DV_TEXT matches {*}
-													DV_CODED_TEXT matches {*}
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0097,    -- IOPcc - corneal-compensated ocular response analysis
+															at0098]    -- bIOP - biomechanically corrected noncontact IOP
+														}
+													}
 												}
 											}
 										}
@@ -229,7 +235,6 @@ definition
 									at0049,    -- Tono-Pen
 									at0050,    -- Rebound
 									at0051,    -- Dynamic Contour
-									at0052,    -- IOPcc - Corneal-Compensated Ocular Response Analysis
 									at0053,    -- Transpalpebral tonometer
 									at0066,    -- Non-contact tonometry
 									at0083,    -- Implanted pressure sensor
@@ -308,10 +313,6 @@ ontology
 					text = <"Dynamic Contour">
 					description = <"Dynamic contour tonometry including PASCAL® devices.">
 				>
-				["at0052"] = <
-					text = <"IOPcc - Corneal-Compensated Ocular Response Analysis">
-					description = <"Ocular Response Analyzer® using the corneal-compensated method.">
-				>
 				["at0053"] = <
 					text = <"Transpalpebral tonometer">
 					description = <"Tonometry through an eyelid, using a device such as the TGDc-01.">
@@ -374,9 +375,9 @@ ontology
 					description = <"Corrected value for intraocular pressure.">
 				>
 				["at0082"] = <
-					text = <"Correction description">
-					description = <"The method used to correct the original intraocular pressure measurement. ">
-					comment = <"This may include a reference to a lookup table ">
+					text = <"Type of correction">
+					description = <"The type method used to correct the original intraocular pressure measurement. ">
+					comment = <"This may include a reference to a lookup table, or coded text referring to an in-device correction.">
 				>
 				["at0083"] = <
 					text = <"Implanted pressure sensor">
@@ -426,6 +427,14 @@ ontology
 				["at0096"] = <
 					text = <"Mydriasis">
 					description = <"">
+				>
+				["at0097"] = <
+					text = <"IOPcc - corneal-compensated ocular response analysis">
+					description = <"The Ocular Response Analyser's output value that is corrected for corneal parameters.">
+				>
+				["at0098"] = <
+					text = <"bIOP - biomechanically corrected noncontact IOP">
+					description = <"The Corvis ST Scheimpflug noncontact tonometer's output value that is corrected based on biomechanical parameters.">
 				>
 			>
 		>
@@ -478,10 +487,6 @@ ontology
 				["at0051"] = <
 					text = <"*Dynamic Contour (en)">
 					description = <"*Dynamic contour tonometry including PASCAL® devices. (en)">
-				>
-				["at0052"] = <
-					text = <"*IOPcc - Corneal-Compensated Ocular Response Analysis (en)">
-					description = <"*Ocular Response Analyzer® using the corneal-compensated method. (en)">
 				>
 				["at0053"] = <
 					text = <"*Transpalpebral tonometer (en)">
@@ -545,9 +550,9 @@ ontology
 					description = <"Korrigert verdi av intraokulært trykk.">
 				>
 				["at0082"] = <
-					text = <"Korrigeringsbeskrivelse.">
-					description = <"Beskrivelse av metoden brukt for å korrigere den originale intraokulære trykkmålingen.">
-					comment = <"*This may include a reference to a lookup table  (en)">
+					text = <"*Type of correction (en)">
+					description = <"*The type method used to correct the original intraocular pressure measurement.  (en)">
+					comment = <"*This may include a reference to a lookup table, or coded text referring to an in-device correction. (en)">
 				>
 				["at0083"] = <
 					text = <"*Implanted pressure sensor (en)">
@@ -598,6 +603,14 @@ ontology
 					text = <"*Mydriasis (en)">
 					description = <"">
 				>
+				["at0097"] = <
+					text = <"*IOPcc - corneal-compensated ocular response analysis (en)">
+					description = <"*The Ocular Response Analyser's output value that is corrected for corneal parameters. (en)">
+				>
+				["at0098"] = <
+					text = <"*bIOP - biomechanically corrected noncontact IOP (en)">
+					description = <"*The Corvis ST Scheimpflug noncontact tonometer's output value that is corrected based on biomechanical parameters. (en)">
+				>
 			>
 		>
 	>
@@ -617,7 +630,6 @@ ontology
 				["at0050"] = <[SNOMED-CT::1286870002]>
 				["at0051"] = <[SNOMED-CT::1286902005]>
 				["at0084"] = <[SNOMED-CT::1286913008]>
-				["at0052"] = <[SNOMED-CT::1286906008]>
 				["at0066"] = <[SNOMED-CT::389150000]>
 				["at0085"] = <[SNOMED-CT::1286917009]>
 				["at0087"] = <[SNOMED-CT::389149000]>
