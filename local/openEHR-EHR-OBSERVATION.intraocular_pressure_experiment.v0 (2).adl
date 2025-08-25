@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"072a1c20379f787a6bf96bb2e323c5a3">
+		["MD5-CAM-1.0.1"] = <"a9f84f651d0971494a4eb8067333de1e">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -85,41 +85,9 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0099] occurrences matches {0..1} matches {    -- Palpatory estimation
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0100,    -- Completely soft (0mmHg)
-													at0101,    -- Hypotensive (approx. 1-7mmHg)
-													at0102,    -- Normal or near-normal (approx. 8-25mmHg)
-													at0103,    -- Hypertensive (approx. 26-50mmHg)
-													at0104]    -- Hard (>50mmHg)
-												}
-											}
-										}
-									}
-									ELEMENT[at0042] occurrences matches {0..1} matches {    -- Pressure
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::125]>
-												list = <
-													["1"] = <
-														units = <"mm[Hg]">
-														magnitude = <|0.0..20000.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									CLUSTER[at0092] occurrences matches {0..*} matches {    -- Intraocular pressure correction details
+									CLUSTER[at0106] occurrences matches {0..*} matches {    -- Result
 										items cardinality matches {1..*; unordered} matches {
-											allow_archetype CLUSTER[at0091] occurrences matches {0..1} matches {    -- Central corneal thickness details
-												include
-													archetype_id/value matches {/openEHR-EHR-CLUSTER\.corneal_thickness_details\.v0/}
-											}
-											ELEMENT[at0081] occurrences matches {0..1} matches {    -- Corrected pressure
+											ELEMENT[at0042] occurrences matches {0..1} matches {    -- Pressure
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::125]>
@@ -133,11 +101,6 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0090] occurrences matches {0..1} matches {    -- Reference to central corneal thickness used for correction
-												value matches {
-													DV_URI matches {*}
-												}
-											}
 											ELEMENT[at0082] occurrences matches {0..1} matches {    -- Type of correction
 												value matches {
 													DV_TEXT matches {*}
@@ -145,9 +108,34 @@ definition
 														defining_code matches {
 															[local::
 															at0097,    -- IOPcc - corneal-compensated ocular response analysis
-															at0098]    -- bIOP - biomechanically corrected noncontact IOP
+															at0098,    -- bIOP - biomechanically corrected noncontact IOP
+															at0108,    -- none - uncorrected
+															at0109]    -- corrected for central corneal thickness.
 														}
 													}
+												}
+											}
+											ELEMENT[at0090] occurrences matches {0..1} matches {    -- Reference to central corneal thickness used for correction
+												value matches {
+													DV_URI matches {*}
+												}
+											}
+											allow_archetype CLUSTER[at0091] occurrences matches {0..1} matches {    -- Central corneal thickness details
+												include
+													archetype_id/value matches {/openEHR-EHR-CLUSTER\.corneal_thickness_details\.v0/}
+											}
+										}
+									}
+									ELEMENT[at0099] occurrences matches {0..1} matches {    -- Palpatory estimation
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0100,    -- Completely soft (0mmHg)
+													at0101,    -- Hypotensive (approx. 1-7mmHg)
+													at0102,    -- Normal or near-normal (approx. 8-25mmHg)
+													at0103,    -- Hypertensive (approx. 26-50mmHg)
+													at0104]    -- Hard (>50mmHg)
 												}
 											}
 										}
@@ -383,10 +371,6 @@ ontology
 					text = <"Multimedia">
 					description = <"Digital image, video or diagram representing the measurement of intraocular pressure.">
 				>
-				["at0081"] = <
-					text = <"Corrected pressure">
-					description = <"Corrected value for intraocular pressure.">
-				>
 				["at0082"] = <
 					text = <"Type of correction">
 					description = <"The type method used to correct the original intraocular pressure measurement. ">
@@ -418,10 +402,6 @@ ontology
 				>
 				["at0091"] = <
 					text = <"Central corneal thickness details">
-					description = <"">
-				>
-				["at0092"] = <
-					text = <"Intraocular pressure correction details">
 					description = <"">
 				>
 				["at0093"] = <
@@ -474,6 +454,18 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				["at0104"] = <
 					text = <"Hard (>50mmHg)">
 					description = <"">
+				>
+				["at0106"] = <
+					text = <"Result">
+					description = <"">
+				>
+				["at0108"] = <
+					text = <"none - uncorrected">
+					description = <"No correction was applied.">
+				>
+				["at0109"] = <
+					text = <"corrected for central corneal thickness.">
+					description = <"A correction based on central corneal thickness was applied.">
 				>
 			>
 		>
@@ -584,10 +576,6 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					text = <"Multimediarepresentasjon">
 					description = <"Digitale bilder, video eller diagram som representerer målingen av det intraokulære trykket.">
 				>
-				["at0081"] = <
-					text = <"Korrigert trykk">
-					description = <"Korrigert verdi av intraokulært trykk.">
-				>
 				["at0082"] = <
 					text = <"*Type of correction (en)">
 					description = <"*The type method used to correct the original intraocular pressure measurement.  (en)">
@@ -619,10 +607,6 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				>
 				["at0091"] = <
 					text = <"*Central corneal thickness details (en)">
-					description = <"">
-				>
-				["at0092"] = <
-					text = <"*Intraocular pressure correction details (en)">
 					description = <"">
 				>
 				["at0093"] = <
@@ -675,6 +659,18 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				["at0104"] = <
 					text = <"*Hard (>50mmHg) (en)">
 					description = <"">
+				>
+				["at0106"] = <
+					text = <"*Result (en)">
+					description = <"">
+				>
+				["at0108"] = <
+					text = <"*none - uncorrected (en)">
+					description = <"*No correction was applied. (en)">
+				>
+				["at0109"] = <
+					text = <"*corrected for central corneal thickness. (en)">
+					description = <"*A correction based on central corneal thickness was applied. (en)">
 				>
 			>
 		>
