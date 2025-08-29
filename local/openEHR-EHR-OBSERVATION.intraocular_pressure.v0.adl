@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"1efe93c39095ca43f019b9b593f0e243">
+		["MD5-CAM-1.0.1"] = <"f43e15e7207cf49def32821bf79c1ed7">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -139,7 +139,7 @@ definition
 													[local::
 													at0097,    -- IOPcc - corneal-compensated ocular response analysis
 													at0098,    -- bIOP - biomechanically corrected noncontact IOP
-													at0156]    -- corrected for CCT
+													at0156]    -- Corrected for CCT
 												}
 											}
 										}
@@ -259,62 +259,16 @@ definition
 											}
 										}
 									}
+									ELEMENT[at0113] occurrences matches {0..1} matches {    -- Current number of substances used to lower pressure
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
 									allow_archetype CLUSTER[at0079] occurrences matches {0..*} matches {    -- Extension
 										include
 											archetype_id/value matches {/.*/}
-									}
-									CLUSTER[at0116] occurrences matches {0..*} matches {    -- Medication used to correct pressure
-										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0117] occurrences matches {0..1} matches {    -- Medication name
-												value matches {
-													DV_EHR_URI matches {*}
-													DV_TEXT matches {*}
-												}
-											}
-											ELEMENT[at0124] occurrences matches {0..1} matches {    -- Time since last administration
-												value matches {
-													DV_DURATION matches {*}
-												}
-											}
-										}
-									}
-									CLUSTER[at0114] occurrences matches {0..*} matches {    -- Related procedure
-										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0125] occurrences matches {0..1} matches {    -- Related procedure name
-												value matches {
-													DV_CODED_TEXT matches {
-														defining_code matches {
-															[local::
-															at0134,    -- Suture removal
-															at0135,    -- Ocular massage
-															at0136,    -- Laser suture lysis
-															at0137,    -- Intracameral Injection
-															at0138,    -- Cameral Paracenthesis
-															at0139,    -- Corneal wound burp
-															at0140,    -- Intraviteal Injection
-															at0141,    -- Water drinking test
-															at0142,    -- Laser Iridotomy
-															at0143]    -- Laser vitreolysis
-														}
-													}
-													DV_URI matches {*}
-													DV_TEXT matches {*}
-												}
-											}
-											ELEMENT[at0131] occurrences matches {0..1} matches {    -- Temporal relationship
-												value matches {
-													DV_DURATION matches {*}
-													DV_CODED_TEXT matches {
-														defining_code matches {
-															[local::
-															at0144,    -- Before procedure
-															at0145,    -- During procedure
-															at0146]    -- After procedure
-														}
-													}
-												}
-											}
-										}
 									}
 								}
 							}
@@ -324,17 +278,7 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0068] matches {    -- Tree
-				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0113] occurrences matches {0..1} matches {    -- Current number of substances used to lower pressure
-						value matches {
-							DV_COUNT matches {
-								magnitude matches {|0..10|}
-							}
-						}
-					}
-				}
-			}
+			ITEM_TREE[at0068] matches {*}    -- Tree
 		}
 	}
 
@@ -563,39 +507,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				["at0113"] = <
 					text = <"Current number of substances used to lower pressure">
 					description = <"The current number of pharmacological substances being used with the intention of lowering the intraocular pressure in the tested eye.">
-					comment = <"Bombination drops containing two substances count as two substances. ">
-				>
-				["at0114"] = <
-					text = <"Related procedure">
-					description = <"">
-				>
-				["at0116"] = <
-					text = <"Medication used to correct pressure">
-					description = <"">
-				>
-				["at0117"] = <
-					text = <"Medication name">
-					description = <"The name of the Medication
-">
-					comment = <"Preferably, this element is used to link to the path of a \"Medication item\" or \"Medication name\" element in a medication-related Archetype. . Where this is not possible, coded text entry of the procedure name should be preferred over free text entry. ">
-				>
-				["at0124"] = <
-					text = <"Time since last administration">
-					description = <"The Duration between the last administration of the medication and the intraocular pressure measurement">
-					comment = <"The time of last administration should instead be recorded in the medication statement archetype. ">
-				>
-				["at0125"] = <
-					text = <"Related procedure name">
-					description = <"The name of the related procedure.">
-					comment = <"Preferably, this element is used to link to the path of a \"Procedure Name\" element of the Procedure Archetype. Where this is not possible, coded text entry of the procedure name should be preferred over free text entry. ">
-				>
-				["at0131"] = <
-					text = <"Temporal relationship">
-					description = <"The duration between the procedure and the intraocular pressure measurement
-
-A positive duration indicates the procedure was performed before the intraocular pressure measurement, a negative duration indicates the opposite. ">
-					comment = <"The time of the procedure should instead be recorded in the procedure archetype. 
-">
+					comment = <"Combination drops containing two substances count as two substances. ">
 				>
 				["at0132"] = <
 					text = <"Exposure to general anaesthesia or sedation.">
@@ -604,58 +516,6 @@ A positive duration indicates the procedure was performed before the intraocular
 				["at0133"] = <
 					text = <"Before procedure">
 					description = <"">
-				>
-				["at0134"] = <
-					text = <"Suture removal">
-					description = <"A suture was removed.">
-				>
-				["at0135"] = <
-					text = <"Ocular massage">
-					description = <"A massage of the eye was performed.">
-				>
-				["at0136"] = <
-					text = <"Laser suture lysis">
-					description = <"A laser suture lysis was performed.">
-				>
-				["at0137"] = <
-					text = <"Intracameral Injection">
-					description = <"An Intracemeral injection was performed">
-				>
-				["at0138"] = <
-					text = <"Cameral Paracenthesis">
-					description = <"A Paracenthesis was performed.">
-				>
-				["at0139"] = <
-					text = <"Corneal wound burp">
-					description = <"A Corneal wound burp was performed.">
-				>
-				["at0140"] = <
-					text = <"Intraviteal Injection">
-					description = <"An Intravitreal injection was performed.">
-				>
-				["at0141"] = <
-					text = <"Water drinking test">
-					description = <"A water drinking test was performed.">
-				>
-				["at0142"] = <
-					text = <"Laser Iridotomy">
-					description = <"A laser iridotomy was performed">
-				>
-				["at0143"] = <
-					text = <"Laser vitreolysis">
-					description = <"A laser vitreolysis was performed.">
-				>
-				["at0144"] = <
-					text = <"Before procedure">
-					description = <"The Intraocular pressure measurement was performed before the procedure.">
-				>
-				["at0145"] = <
-					text = <"During procedure">
-					description = <"The Intraocular pressure measurement was performed during the procedure.">
-				>
-				["at0146"] = <
-					text = <"After procedure">
-					description = <"The Intraocular pressure measurement was performed after the procedure.">
 				>
 				["at0147"] = <
 					text = <"During procedure">
@@ -694,8 +554,8 @@ A positive duration indicates the procedure was performed before the intraocular
 					description = <"">
 				>
 				["at0156"] = <
-					text = <"corrected for CCT">
-					description = <"The Pressure was corrected for central corneal thickness..">
+					text = <"Corrected for CCT">
+					description = <"The Pressure was corrected for central corneal thickness.">
 				>
 			>
 		>
@@ -921,39 +781,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				["at0113"] = <
 					text = <"*Current number of substances used to lower pressure (en)">
 					description = <"*The current number of pharmacological substances being used with the intention of lowering the intraocular pressure in the tested eye. (en)">
-					comment = <"*Bombination drops containing two substances count as two substances.  (en)">
-				>
-				["at0114"] = <
-					text = <"*Related procedure (en)">
-					description = <"">
-				>
-				["at0116"] = <
-					text = <"*Medication used to correct pressure (en)">
-					description = <"">
-				>
-				["at0117"] = <
-					text = <"*Medication name (en)">
-					description = <"*The name of the Medication
- (en)">
-					comment = <"*Preferably, this element is used to link to the path of a \"Medication item\" or \"Medication name\" element in a medication-related Archetype. . Where this is not possible, coded text entry of the procedure name should be preferred over free text entry.  (en)">
-				>
-				["at0124"] = <
-					text = <"*Time since last administration (en)">
-					description = <"*The Duration between the last administration of the medication and the intraocular pressure measurement (en)">
-					comment = <"*The time of last administration should instead be recorded in the medication statement archetype.  (en)">
-				>
-				["at0125"] = <
-					text = <"*Related procedure name (en)">
-					description = <"*The name of the related procedure. (en)">
-					comment = <"*Preferably, this element is used to link to the path of a \"Procedure Name\" element of the Procedure Archetype. Where this is not possible, coded text entry of the procedure name should be preferred over free text entry.  (en)">
-				>
-				["at0131"] = <
-					text = <"*Temporal relationship (en)">
-					description = <"*The duration between the procedure and the intraocular pressure measurement
-
-A positive duration indicates the procedure was performed before the intraocular pressure measurement, a negative duration indicates the opposite.  (en)">
-					comment = <"*The time of the procedure should instead be recorded in the procedure archetype. 
- (en)">
+					comment = <"*Combination drops containing two substances count as two substances.  (en)">
 				>
 				["at0132"] = <
 					text = <"*Exposure to general anaesthesia or sedation. (en)">
@@ -962,58 +790,6 @@ A positive duration indicates the procedure was performed before the intraocular
 				["at0133"] = <
 					text = <"*Before procedure (en)">
 					description = <"">
-				>
-				["at0134"] = <
-					text = <"*Suture removal (en)">
-					description = <"*A suture was removed. (en)">
-				>
-				["at0135"] = <
-					text = <"*Ocular massage (en)">
-					description = <"*A massage of the eye was performed. (en)">
-				>
-				["at0136"] = <
-					text = <"*Laser suture lysis (en)">
-					description = <"*A laser suture lysis was performed. (en)">
-				>
-				["at0137"] = <
-					text = <"*Intracameral Injection (en)">
-					description = <"*An Intracemeral injection was performed (en)">
-				>
-				["at0138"] = <
-					text = <"*Cameral Paracenthesis (en)">
-					description = <"*A Paracenthesis was performed. (en)">
-				>
-				["at0139"] = <
-					text = <"*Corneal wound burp (en)">
-					description = <"*A Corneal wound burp was performed. (en)">
-				>
-				["at0140"] = <
-					text = <"*Intraviteal Injection (en)">
-					description = <"*An Intravitreal injection was performed. (en)">
-				>
-				["at0141"] = <
-					text = <"*Water drinking test (en)">
-					description = <"*A water drinking test was performed. (en)">
-				>
-				["at0142"] = <
-					text = <"*Laser Iridotomy (en)">
-					description = <"*A laser iridotomy was performed (en)">
-				>
-				["at0143"] = <
-					text = <"*Laser vitreolysis (en)">
-					description = <"*A laser vitreolysis was performed. (en)">
-				>
-				["at0144"] = <
-					text = <"*Before procedure (en)">
-					description = <"*The Intraocular pressure measurement was performed before the procedure. (en)">
-				>
-				["at0145"] = <
-					text = <"*During procedure (en)">
-					description = <"*The Intraocular pressure measurement was performed during the procedure. (en)">
-				>
-				["at0146"] = <
-					text = <"*After procedure (en)">
-					description = <"*The Intraocular pressure measurement was performed after the procedure. (en)">
 				>
 				["at0147"] = <
 					text = <"*During procedure (en)">
@@ -1052,8 +828,8 @@ A positive duration indicates the procedure was performed before the intraocular
 					description = <"">
 				>
 				["at0156"] = <
-					text = <"*corrected for CCT (en)">
-					description = <"*The Pressure was corrected for central corneal thickness.. (en)">
+					text = <"*Corrected for CCT (en)">
+					description = <"*The Pressure was corrected for central corneal thickness. (en)">
 				>
 			>
 		>
