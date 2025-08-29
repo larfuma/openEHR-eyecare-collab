@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"fee5d30ded78de7535ba449e5d3c4e31">
+		["MD5-CAM-1.0.1"] = <"4522611b4abf2ced8d37f28ea72cdde0">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -211,9 +211,11 @@ definition
 													at0147,    -- During procedure
 													at0148,    -- After procedure
 													at0149,    -- Provocation test
-													at0150,    -- Proper exposure to pressure lowering regimen
-													at0151,    -- Improper or partial exposure to pressure lowering regimen
-													at0152,    -- Not influenced by pressure lowering medications
+													at0150,    -- Presumably exposed to IOP-lowering medication as previously planned
+													at0151,    -- Uncertain if exposed to IOP-lowering medications as previously planned
+													at0157,    -- Not exposed to IOP-lowering medications as previously planned
+													at0152,    -- No IOP-lowering medications
+													at0158,    -- Planned exception to normal IOP-lowering medication regimen
 													at0153,    -- Blepharospasm
 													at0154]    -- Reduced cooperation
 												}
@@ -530,15 +532,15 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0150"] = <
-					text = <"Proper exposure to pressure lowering regimen">
+					text = <"Presumably exposed to IOP-lowering medication as previously planned">
 					description = <"">
 				>
 				["at0151"] = <
-					text = <"Improper or partial exposure to pressure lowering regimen">
+					text = <"Uncertain if exposed to IOP-lowering medications as previously planned">
 					description = <"">
 				>
 				["at0152"] = <
-					text = <"Not influenced by pressure lowering medications">
+					text = <"No IOP-lowering medications">
 					description = <"">
 				>
 				["at0153"] = <
@@ -556,6 +558,14 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				["at0156"] = <
 					text = <"Corrected for CCT">
 					description = <"The Pressure was corrected for central corneal thickness.">
+				>
+				["at0157"] = <
+					text = <"Not exposed to IOP-lowering medications as previously planned">
+					description = <"">
+				>
+				["at0158"] = <
+					text = <"Planned exception to normal IOP-lowering medication regimen">
+					description = <"">
 				>
 			>
 		>
@@ -804,15 +814,15 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0150"] = <
-					text = <"*Proper exposure to pressure lowering regimen (en)">
+					text = <"*Presumably exposed to IOP-lowering medication as previously planned (en)">
 					description = <"">
 				>
 				["at0151"] = <
-					text = <"*Improper or partial exposure to pressure lowering regimen (en)">
+					text = <"*Uncertain if exposed to IOP-lowering medications as previously planned (en)">
 					description = <"">
 				>
 				["at0152"] = <
-					text = <"*Not influenced by pressure lowering medications (en)">
+					text = <"*No IOP-lowering medications (en)">
 					description = <"">
 				>
 				["at0153"] = <
@@ -830,6 +840,14 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				["at0156"] = <
 					text = <"*Corrected for CCT (en)">
 					description = <"*The Pressure was corrected for central corneal thickness. (en)">
+				>
+				["at0157"] = <
+					text = <"*Not exposed to IOP-lowering medications as previously planned (en)">
+					description = <"">
+				>
+				["at0158"] = <
+					text = <"*Planned exception to normal IOP-lowering medication regimen (en)">
+					description = <"">
 				>
 			>
 		>
