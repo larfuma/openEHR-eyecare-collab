@@ -81,6 +81,14 @@ Denne arketypen er bevist designet som en CLUSTER arketype, slik at referansen k
 			use = <"Usado para referenciar informações que estão armazenadas em outro local do RES ou externas ao RES ativo, então essas informações podem ser incluídas no documento atual ou na mensagem que está sendo criada. Por exemplo, um sumário de alta pode incluir um relatório resumido de um teste laboratorial com o uso deste arquétipo de citação, em vez de duplicar todo o relatório laboratorial.
 Este arquétipo está deliberadamente projetado como uma classe de arquétipo CLUSTER de forma que a citação possa ser feita por meio de inserção em um slot dentro do contexto de outros arquétipos ou como uma instancia independente dentro do arquétipo específico EVALUATION.citation.">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To enable specific sections of health information that are stored elsewhere to be included within the current clinical record.">
+			keywords = <"citation","reference">
+			copyright = <"© openEHR Foundation">
+			use = <"Use to reference information that is stored elsewhere in the same EHR or external to the active EHR, so that it can be included in the current document or message that is being created.  For example, a discharge summary may include the summary report of a laboratory test through the use of this citation archetype, rather than duplicating the whole laboratory report.
+This archetype is deliberately designed as a CLUSTER class archetype so that the citation can be made via insertion into a slot within the context of other archetypes, or as a standalone instance within the specific EVALUATION.citation archetype.">
+		>
 		["ar-sy"] = <
 			language = <[ISO_639-1::ar-sy]>
 			purpose = <"ليتمكن من تضمين المقاطع المحددة للمعلومات الطبية في داخل السجل السريري الحالي, و التي كان يتم تخزينها في مكان آخر">
@@ -89,14 +97,6 @@ Este arquétipo está deliberadamente projetado como uma classe de arquétipo CL
 			use = <"يستخدم كمرجع للمعلومات التي يتم تخزينها في مكان آخر في داخل ذات السجل الطبي الإلكتروني, أو في خارج السجل الطبي الإلكتروني النشط, بحيث يمكن تضمينه في الوثيقة الحالية أو الرسالة التي يتم تكوينها.
 مثلا: قد يتضمن ملخص الخروج تقريرا موجزا لاختبار معملي عن طريق استخدام هذا النموذج الخاص بالمرجعية, بدلا من تكرار إدراج نفس التقرير المعملي.
 و قد تم تعمد تصميم هذا النموذج على هيئة فئة نماذج (عنقود) حتى يتم إدراج المرجعية في شرفة في سياق النماذج الأخرى, أو كمعلومة مستقلة في النموذج المخصص (تقييم. اقتباس).">
-		>
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To enable specific sections of health information that are stored elsewhere to be included within the current clinical record.">
-			keywords = <"citation","reference">
-			copyright = <"© openEHR Foundation">
-			use = <"Use to reference information that is stored elsewhere in the same EHR or external to the active EHR, so that it can be included in the current document or message that is being created.  For example, a discharge summary may include the summary report of a laboratory test through the use of this citation archetype, rather than duplicating the whole laboratory report.
-This archetype is deliberately designed as a CLUSTER class archetype so that the citation can be made via insertion into a slot within the context of other archetypes, or as a standalone instance within the specific EVALUATION.citation archetype.">
 		>
 		["zh-cn"] = <
 			language = <[ISO_639-1::zh-cn]>
@@ -114,7 +114,7 @@ This archetype is deliberately designed as a CLUSTER class archetype so that the
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"DA2C4FA1BBEBDDA9C9E13EE31D97C437">
+		["MD5-CAM-1.0.1"] = <"54a78b7b975b2e5f36b66694c1c081aa">
 		["build_uid"] = <"a90753d4-595a-46e7-9c96-fcbe8611865e">
 		["revision"] = <"0.0.1-alpha">
 	>
@@ -131,6 +131,25 @@ definition
 				value matches {
 					DV_PARSABLE matches {*}
 					DV_MULTIMEDIA matches {*}
+					DV_QUANTITY matches {*}
+					DV_CODED_TEXT matches {*}
+					DV_COUNT matches {*}
+					DV_ORDINAL matches {*}
+					DV_PROPORTION matches {*}
+					DV_TEXT matches {*}
+					DV_BOOLEAN matches {*}
+					DV_DATE matches {*}
+					DV_DATE_TIME matches {*}
+					DV_TIME matches {*}
+					DV_SCALE matches {*}
+					DV_DURATION matches {*}
+					DV_IDENTIFIER matches {*}
+					DV_INTERVAL<DV_COUNT> matches {*}
+					DV_INTERVAL<DV_DATE> matches {*}
+					DV_INTERVAL<DV_DATE_TIME> matches {*}
+					DV_INTERVAL<DV_DURATION> matches {*}
+					DV_INTERVAL<DV_QUANTITY> matches {*}
+					DV_INTERVAL<DV_TIME> matches {*}
 				}
 			}
 			ELEMENT[at0002] occurrences matches {0..1} matches {    -- URI to original data
