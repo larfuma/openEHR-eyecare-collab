@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"4522611b4abf2ced8d37f28ea72cdde0">
+		["MD5-CAM-1.0.1"] = <"a24a02efe927661ded9693e7dbfcb1f5">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -105,10 +105,10 @@ definition
 												defining_code matches {
 													[local::
 													at0100,    -- No pressure
-													at0101,    -- softer than normal
-													at0102,    -- approximately normal
-													at0103,    -- harder than normal
-													at0104]    -- very hard
+													at0101,    -- Softer than normal
+													at0102,    -- Approximately normal
+													at0103,    -- Harder than normal
+													at0104]    -- Very hard
 												}
 											}
 										}
@@ -463,19 +463,19 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"The eyeball is completely soft, no resistance to palpation.">
 				>
 				["at0101"] = <
-					text = <"softer than normal">
+					text = <"Softer than normal">
 					description = <"The eyeball is softer than the normal range, but there is some resistance to palpation.">
 				>
 				["at0102"] = <
-					text = <"approximately normal">
+					text = <"Approximately normal">
 					description = <"The pressure appears to be within or close to the normal range (10-21mmHg)">
 				>
 				["at0103"] = <
-					text = <"harder than normal">
+					text = <"Harder than normal">
 					description = <"The eyeball is harder than the range,  but not as hard as in an extreme IOP spike.">
 				>
 				["at0104"] = <
-					text = <"very hard">
+					text = <"Very hard">
 					description = <"The eyeball is as hard as it is in an extreme (>50mmHg) IOP spike, sometimes referred to as a rock-hard eye.">
 				>
 				["at0105"] = <
@@ -745,19 +745,19 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"*The eyeball is completely soft, no resistance to palpation. (en)">
 				>
 				["at0101"] = <
-					text = <"*softer than normal (en)">
+					text = <"*Softer than normal (en)">
 					description = <"*The eyeball is softer than the normal range, but there is some resistance to palpation. (en)">
 				>
 				["at0102"] = <
-					text = <"*approximately normal (en)">
+					text = <"*Approximately normal (en)">
 					description = <"*The pressure appears to be within or close to the normal range (10-21mmHg) (en)">
 				>
 				["at0103"] = <
-					text = <"*harder than normal (en)">
+					text = <"*Harder than normal (en)">
 					description = <"*The eyeball is harder than the range,  but not as hard as in an extreme IOP spike. (en)">
 				>
 				["at0104"] = <
-					text = <"*very hard (en)">
+					text = <"*Very hard (en)">
 					description = <"*The eyeball is as hard as it is in an extreme (>50mmHg) IOP spike, sometimes referred to as a rock-hard eye. (en)">
 				>
 				["at0105"] = <
