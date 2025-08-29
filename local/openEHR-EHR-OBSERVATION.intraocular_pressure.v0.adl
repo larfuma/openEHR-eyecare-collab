@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"5f936476c7343c760c9a1e5ac1c22493">
+		["MD5-CAM-1.0.1"] = <"1efe93c39095ca43f019b9b593f0e243">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -138,7 +138,8 @@ definition
 												defining_code matches {
 													[local::
 													at0097,    -- IOPcc - corneal-compensated ocular response analysis
-													at0098]    -- bIOP - biomechanically corrected noncontact IOP
+													at0098,    -- bIOP - biomechanically corrected noncontact IOP
+													at0156]    -- corrected for CCT
 												}
 											}
 										}
@@ -153,14 +154,14 @@ definition
 											DV_TEXT matches {*}
 										}
 									}
-									allow_archetype CLUSTER[at0080] occurrences matches {0..*} matches {    -- Multimedia
-										include
-											archetype_id/value matches {/openEHR-EHR-CLUSTER\.multimedia(-[a-zA-Z0-9_]+)*\.v1/}
-									}
 									ELEMENT[at0063] occurrences matches {0..1} matches {    -- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
+									}
+									allow_archetype CLUSTER[at0080] occurrences matches {0..*} matches {    -- Multimedia
+										include
+											archetype_id/value matches {/openEHR-EHR-CLUSTER\.multimedia(-[a-zA-Z0-9_]+)*\.v1/}
 									}
 									allow_archetype CLUSTER[at0078] occurrences matches {0..*} matches {    -- Test not done
 										include
@@ -692,6 +693,10 @@ A positive duration indicates the procedure was performed before the intraocular
 					text = <"No">
 					description = <"">
 				>
+				["at0156"] = <
+					text = <"corrected for CCT">
+					description = <"The Pressure was corrected for central corneal thickness..">
+				>
 			>
 		>
 		["nb"] = <
@@ -1045,6 +1050,10 @@ A positive duration indicates the procedure was performed before the intraocular
 				["at0155"] = <
 					text = <"*No (en)">
 					description = <"">
+				>
+				["at0156"] = <
+					text = <"*corrected for CCT (en)">
+					description = <"*The Pressure was corrected for central corneal thickness.. (en)">
 				>
 			>
 		>
