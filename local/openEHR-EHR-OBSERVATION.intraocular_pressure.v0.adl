@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"38fd64232c317c9591b0bb1892d12b09">
+		["MD5-CAM-1.0.1"] = <"fee5d30ded78de7535ba449e5d3c4e31">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -85,20 +85,6 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0099] occurrences matches {0..1} matches {    -- Palpatory estimation
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0100,    -- No pressure
-													at0101,    -- softer than normal
-													at0102,    -- approximately normal
-													at0103,    -- harder than normal
-													at0104]    -- very hard
-												}
-											}
-										}
-									}
 									ELEMENT[at0042] occurrences matches {0..1} matches {    -- Pressure
 										value matches {
 											C_DV_QUANTITY <
@@ -113,9 +99,19 @@ definition
 											>
 										}
 									}
-									allow_archetype CLUSTER[at0091] occurrences matches {0..1} matches {    -- Citation of central corneal thickness
-										include
-											archetype_id/value matches {/openEHR-EHR-CLUSTER\.citation\.v0/}
+									ELEMENT[at0099] occurrences matches {0..1} matches {    -- Palpatory estimation
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0100,    -- No pressure
+													at0101,    -- softer than normal
+													at0102,    -- approximately normal
+													at0103,    -- harder than normal
+													at0104]    -- very hard
+												}
+											}
+										}
 									}
 									ELEMENT[at0081] occurrences matches {0..1} matches {    -- Corrected pressure
 										value matches {
@@ -162,6 +158,10 @@ definition
 									allow_archetype CLUSTER[at0080] occurrences matches {0..*} matches {    -- Multimedia
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.multimedia(-[a-zA-Z0-9_]+)*\.v1/}
+									}
+									allow_archetype CLUSTER[at0091] occurrences matches {0..1} matches {    -- Citation of central corneal thickness
+										include
+											archetype_id/value matches {/openEHR-EHR-CLUSTER\.citation\.v0/}
 									}
 									allow_archetype CLUSTER[at0078] occurrences matches {0..*} matches {    -- Test not done
 										include
