@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"7fd6c48c68cdc5cf8558c69f0eccd20d">
+		["MD5-CAM-1.0.1"] = <"5f936476c7343c760c9a1e5ac1c22493">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -113,41 +113,32 @@ definition
 											>
 										}
 									}
-									CLUSTER[at0092] occurrences matches {0..*} matches {    -- Intraocular pressure correction details
-										items cardinality matches {1..*; unordered} matches {
-											allow_archetype CLUSTER[at0091] occurrences matches {0..1} matches {    -- Central corneal thickness details
-												include
-													archetype_id/value matches {/openEHR-EHR-CLUSTER\.corneal_thickness_details\.v0/}
-											}
-											ELEMENT[at0081] occurrences matches {0..1} matches {    -- Corrected pressure
-												value matches {
-													C_DV_QUANTITY <
-														property = <[openehr::125]>
-														list = <
-															["1"] = <
-																units = <"mm[Hg]">
-																magnitude = <|0.0..20000.0|>
-																precision = <|2|>
-															>
-														>
+									allow_archetype CLUSTER[at0091] occurrences matches {0..1} matches {    -- Citation of central corneal thickness
+										include
+											archetype_id/value matches {/openEHR-EHR-CLUSTER\.citation\.v0/}
+									}
+									ELEMENT[at0081] occurrences matches {0..1} matches {    -- Corrected pressure
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::125]>
+												list = <
+													["1"] = <
+														units = <"mm[Hg]">
+														magnitude = <|0.0..20000.0|>
+														precision = <|2|>
 													>
-												}
-											}
-											ELEMENT[at0090] occurrences matches {0..1} matches {    -- Reference to central corneal thickness used for correction
-												value matches {
-													DV_URI matches {*}
-												}
-											}
-											ELEMENT[at0082] occurrences matches {0..1} matches {    -- Type of correction
-												value matches {
-													DV_TEXT matches {*}
-													DV_CODED_TEXT matches {
-														defining_code matches {
-															[local::
-															at0097,    -- IOPcc - corneal-compensated ocular response analysis
-															at0098]    -- bIOP - biomechanically corrected noncontact IOP
-														}
-													}
+												>
+											>
+										}
+									}
+									ELEMENT[at0082] occurrences matches {0..1} matches {    -- Type of correction
+										value matches {
+											DV_TEXT matches {*}
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0097,    -- IOPcc - corneal-compensated ocular response analysis
+													at0098]    -- bIOP - biomechanically corrected noncontact IOP
 												}
 											}
 										}
@@ -485,17 +476,9 @@ For devices that output multiple pressure values, this element should be used to
 					text = <"Schiøtz">
 					description = <"Schiøtz Tonomety was used to perform the test.">
 				>
-				["at0090"] = <
-					text = <"Reference to central corneal thickness used for correction">
-					description = <"A URI referencing a previously recorded central corneal thickness measurement.">
-				>
 				["at0091"] = <
-					text = <"Central corneal thickness details">
-					description = <"">
-				>
-				["at0092"] = <
-					text = <"Intraocular pressure correction details">
-					description = <"">
+					text = <"Citation of central corneal thickness">
+					description = <"A citation of the central corneal thickness measurement used to calculate the corrected pressure. ">
 				>
 				["at0093"] = <
 					text = <"Ocular response analysis waveform score">
@@ -847,17 +830,9 @@ For devices that output multiple pressure values, this element should be used to
 					text = <"*Schiøtz (en)">
 					description = <"*Schiøtz Tonomety was used to perform the test. (en)">
 				>
-				["at0090"] = <
-					text = <"*Reference to central corneal thickness used for correction (en)">
-					description = <"*A URI referencing a previously recorded central corneal thickness measurement. (en)">
-				>
 				["at0091"] = <
-					text = <"*Central corneal thickness details (en)">
-					description = <"">
-				>
-				["at0092"] = <
-					text = <"*Intraocular pressure correction details (en)">
-					description = <"">
+					text = <"*Citation of central corneal thickness (en)">
+					description = <"*A citation of the central corneal thickness measurement used to calculate the corrected pressure.  (en)">
 				>
 				["at0093"] = <
 					text = <"*Ocular response analysis waveform score (en)">
