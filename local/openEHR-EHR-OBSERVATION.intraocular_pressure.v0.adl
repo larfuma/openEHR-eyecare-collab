@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"f43e15e7207cf49def32821bf79c1ed7">
+		["MD5-CAM-1.0.1"] = <"38fd64232c317c9591b0bb1892d12b09">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -205,17 +205,17 @@ definition
 												defining_code matches {
 													[local::
 													at0096,    -- Mydriasis
-													at0132,    -- Exposure to general anaesthesia or sedation.
+													at0132,    -- General anaesthesia
+													at0155,    -- Sedation
 													at0133,    -- Before procedure
 													at0147,    -- During procedure
 													at0148,    -- After procedure
 													at0149,    -- Provocation test
-													at0150,    -- Presumed proper exposure to pressure lowering regimen
-													at0151,    -- Presumed Improper or partial exposure to pressure lowering regimen
+													at0150,    -- Proper exposure to pressure lowering regimen
+													at0151,    -- Improper or partial exposure to pressure lowering regimen
 													at0152,    -- Not influenced by pressure lowering medications
 													at0153,    -- Blepharospasm
-													at0154,    -- Reduced cooperation
-													at0155]    -- No
+													at0154]    -- Reduced cooperation
 												}
 											}
 										}
@@ -375,7 +375,7 @@ ontology
 				>
 				["at0074"] = <
 					text = <"Contextual factors">
-					description = <"Description of any incidental factors related to the state of the subject which may affect clinical interpretation of the measurement.">
+					description = <"Description of factors related to the state of the subject which may affect the intraocular pressure, the ability to accurately measure it, or the interpretation of the measurement.">
 				>
 				["at0078"] = <
 					text = <"Test not done">
@@ -510,7 +510,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					comment = <"Combination drops containing two substances count as two substances. ">
 				>
 				["at0132"] = <
-					text = <"Exposure to general anaesthesia or sedation.">
+					text = <"General anaesthesia">
 					description = <"">
 				>
 				["at0133"] = <
@@ -530,11 +530,11 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0150"] = <
-					text = <"Presumed proper exposure to pressure lowering regimen">
+					text = <"Proper exposure to pressure lowering regimen">
 					description = <"">
 				>
 				["at0151"] = <
-					text = <"Presumed Improper or partial exposure to pressure lowering regimen">
+					text = <"Improper or partial exposure to pressure lowering regimen">
 					description = <"">
 				>
 				["at0152"] = <
@@ -550,7 +550,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0155"] = <
-					text = <"No">
+					text = <"Sedation">
 					description = <"">
 				>
 				["at0156"] = <
@@ -649,7 +649,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				>
 				["at0074"] = <
 					text = <"*Contextual factors (en)">
-					description = <"*Description of any incidental factors related to the state of the subject which may affect clinical interpretation of the measurement. (en)">
+					description = <"*Description of factors related to the state of the subject which may affect the intraocular pressure, the ability to accurately measure it, or the interpretation of the measurement. (en)">
 				>
 				["at0078"] = <
 					text = <"Undersøkelse ikke utført">
@@ -784,7 +784,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					comment = <"*Combination drops containing two substances count as two substances.  (en)">
 				>
 				["at0132"] = <
-					text = <"*Exposure to general anaesthesia or sedation. (en)">
+					text = <"*General anaesthesia (en)">
 					description = <"">
 				>
 				["at0133"] = <
@@ -804,11 +804,11 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0150"] = <
-					text = <"*Presumed proper exposure to pressure lowering regimen (en)">
+					text = <"*Proper exposure to pressure lowering regimen (en)">
 					description = <"">
 				>
 				["at0151"] = <
-					text = <"*Presumed Improper or partial exposure to pressure lowering regimen (en)">
+					text = <"*Improper or partial exposure to pressure lowering regimen (en)">
 					description = <"">
 				>
 				["at0152"] = <
@@ -824,7 +824,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0155"] = <
-					text = <"*No (en)">
+					text = <"*Sedation (en)">
 					description = <"">
 				>
 				["at0156"] = <
