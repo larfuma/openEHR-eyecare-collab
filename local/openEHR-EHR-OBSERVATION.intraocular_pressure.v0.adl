@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"aef768ae5c917f05061c1cb17aadec5c">
+		["MD5-CAM-1.0.1"] = <"37c8d071dab6cedf356a4e76ad9a48ab">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -247,7 +247,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0159] occurrences matches {0..1} matches {    -- Exposure to IOP-lowering drugs
+									ELEMENT[at0159] occurrences matches {0..1} matches {    -- Exposure to IOP-lowering Medications
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
@@ -523,7 +523,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"The Pressure was corrected for central corneal thickness.">
 				>
 				["at0159"] = <
-					text = <"Exposure to IOP-lowering drugs">
+					text = <"Exposure to IOP-lowering Medications">
 					description = <"">
 				>
 				["at0160"] = <
@@ -781,7 +781,7 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"*The Pressure was corrected for central corneal thickness. (en)">
 				>
 				["at0159"] = <
-					text = <"*Exposure to IOP-lowering drugs (en)">
+					text = <"*Exposure to IOP-lowering Medications (en)">
 					description = <"">
 				>
 				["at0160"] = <
