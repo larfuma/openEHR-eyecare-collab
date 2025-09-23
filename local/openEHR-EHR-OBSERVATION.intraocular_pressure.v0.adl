@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"eb793de6e16425ec6ac0189f268e3bec">
+		["MD5-CAM-1.0.1"] = <"aef768ae5c917f05061c1cb17aadec5c">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -252,9 +252,9 @@ definition
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0160,    -- Presumeably completely regimen exposure
-													at0161,    -- Presumeable incomplete regimen exposure
-													at0162,    -- Uncertain regimen exposure
+													at0160,    -- Complete regimen exposure (presumed)
+													at0161,    -- Incomplete regimen exposure (presumed)
+													at0162,    -- Uncertain regimen exposure.
 													at0163]    -- No IOP lowering drugs
 												}
 											}
@@ -527,15 +527,15 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0160"] = <
-					text = <"Presumeably completely regimen exposure">
+					text = <"Complete regimen exposure (presumed)">
 					description = <"The measured eye had presumeably exposed to IOP-lowering drugs as planned before this measurement.">
 				>
 				["at0161"] = <
-					text = <"Presumeable incomplete regimen exposure">
+					text = <"Incomplete regimen exposure (presumed)">
 					description = <"The measured eye had presumeably been incompletely exposed to IOP-lowering drugs compared to the treatment plan before this measurement.">
 				>
 				["at0162"] = <
-					text = <"Uncertain regimen exposure">
+					text = <"Uncertain regimen exposure.">
 					description = <"It is unknown if or how the measured eye had been exposed to the  IOP-loweing drug regimen.">
 				>
 				["at0163"] = <
@@ -785,15 +785,15 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"">
 				>
 				["at0160"] = <
-					text = <"*Presumeably completely regimen exposure (en)">
+					text = <"*Complete regimen exposure (presumed) (en)">
 					description = <"*The measured eye had presumeably exposed to IOP-lowering drugs as planned before this measurement. (en)">
 				>
 				["at0161"] = <
-					text = <"*Presumeable incomplete regimen exposure (en)">
+					text = <"*Incomplete regimen exposure (presumed) (en)">
 					description = <"*The measured eye had presumeably been incompletely exposed to IOP-lowering drugs compared to the treatment plan before this measurement. (en)">
 				>
 				["at0162"] = <
-					text = <"*Uncertain regimen exposure (en)">
+					text = <"*Uncertain regimen exposure. (en)">
 					description = <"*It is unknown if or how the measured eye had been exposed to the  IOP-loweing drug regimen. (en)">
 				>
 				["at0163"] = <
