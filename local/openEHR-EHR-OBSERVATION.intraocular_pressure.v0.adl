@@ -59,7 +59,7 @@ Lamparter, J., & Hoffmann, E. M. (2009). Messung des Augeninnendrucks (Tonometri
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"a24a02efe927661ded9693e7dbfcb1f5">
+		["MD5-CAM-1.0.1"] = <"eb793de6e16425ec6ac0189f268e3bec">
 		["build_uid"] = <"2210dd7f-6e5e-439d-b510-a757d1d46d5c">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
@@ -155,10 +155,6 @@ definition
 											DV_TEXT matches {*}
 										}
 									}
-									allow_archetype CLUSTER[at0080] occurrences matches {0..*} matches {    -- Multimedia
-										include
-											archetype_id/value matches {/openEHR-EHR-CLUSTER\.multimedia(-[a-zA-Z0-9_]+)*\.v1/}
-									}
 									allow_archetype CLUSTER[at0091] occurrences matches {0..1} matches {    -- Citation of central corneal thickness
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.citation\.v0/}
@@ -198,24 +194,14 @@ definition
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									ELEMENT[at0074] occurrences matches {0..*} matches {    -- Contextual factors
+									ELEMENT[at0074] occurrences matches {0..*} matches {    -- Confounding Factors
 										value matches {
 											DV_TEXT matches {*}
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0096,    -- Mydriasis
 													at0132,    -- General anaesthesia
 													at0155,    -- Sedation
-													at0133,    -- Before procedure
-													at0147,    -- During procedure
-													at0148,    -- After procedure
-													at0149,    -- Provocation test
-													at0150,    -- Presumably exposed to IOP-lowering medication as previously planned
-													at0151,    -- Uncertain if exposed to IOP-lowering medications as previously planned
-													at0157,    -- Not exposed to IOP-lowering medications as previously planned
-													at0152,    -- No IOP-lowering medications
-													at0158,    -- Planned exception to normal IOP-lowering medication regimen
 													at0153,    -- Blepharospasm
 													at0154]    -- Reduced cooperation
 												}
@@ -257,6 +243,19 @@ definition
 													at0109,    -- Lying in prone position
 													at0110,    -- Lying in left lateral decubitus position
 													at0111]    -- Lying in right lateral decubitus position
+												}
+											}
+										}
+									}
+									ELEMENT[at0159] occurrences matches {0..1} matches {    -- Exposure to IOP-lowering drugs
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0160,    -- Presumeably completely regimen exposure
+													at0161,    -- Presumeable incomplete regimen exposure
+													at0162,    -- Uncertain regimen exposure
+													at0163]    -- No IOP lowering drugs
 												}
 											}
 										}
@@ -376,8 +375,8 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0074"] = <
-					text = <"Contextual factors">
-					description = <"Description of factors related to the state of the subject which may affect the intraocular pressure, the ability to accurately measure it, or the interpretation of the measurement.">
+					text = <"Confounding Factors">
+					description = <"Patient circumstances or actions which affect interpretation of the result.">
 				>
 				["at0078"] = <
 					text = <"Test not done">
@@ -387,10 +386,6 @@ ontology
 					text = <"Extension">
 					description = <"Additional information required to capture local content or to align with other reference models/formalisms.">
 					comment = <"For example: local information requirements or additional metadata to align with FHIR or CIMI equivalents.">
-				>
-				["at0080"] = <
-					text = <"Multimedia">
-					description = <"Digital image, video or diagram representing the measurement of intraocular pressure.">
 				>
 				["at0081"] = <
 					text = <"Corrected pressure">
@@ -439,10 +434,6 @@ For devices that output multiple pressure values, this element should be used to
 				["at0095"] = <
 					text = <"Prism graduation mark on 43° offset mark">
 					description = <"The value of the degree of the graduation mark on the Goldmann prism probe that was aligned with 43° offset mark, usually a visible by a red line or the letter A.">
-				>
-				["at0096"] = <
-					text = <"Mydriasis">
-					description = <"">
 				>
 				["at0097"] = <
 					text = <"IOPcc - corneal-compensated ocular response analysis">
@@ -515,34 +506,6 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					text = <"General anaesthesia">
 					description = <"">
 				>
-				["at0133"] = <
-					text = <"Before procedure">
-					description = <"">
-				>
-				["at0147"] = <
-					text = <"During procedure">
-					description = <"">
-				>
-				["at0148"] = <
-					text = <"After procedure">
-					description = <"">
-				>
-				["at0149"] = <
-					text = <"Provocation test">
-					description = <"">
-				>
-				["at0150"] = <
-					text = <"Presumably exposed to IOP-lowering medication as previously planned">
-					description = <"">
-				>
-				["at0151"] = <
-					text = <"Uncertain if exposed to IOP-lowering medications as previously planned">
-					description = <"">
-				>
-				["at0152"] = <
-					text = <"No IOP-lowering medications">
-					description = <"">
-				>
 				["at0153"] = <
 					text = <"Blepharospasm">
 					description = <"">
@@ -559,13 +522,25 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					text = <"Corrected for CCT">
 					description = <"The Pressure was corrected for central corneal thickness.">
 				>
-				["at0157"] = <
-					text = <"Not exposed to IOP-lowering medications as previously planned">
+				["at0159"] = <
+					text = <"Exposure to IOP-lowering drugs">
 					description = <"">
 				>
-				["at0158"] = <
-					text = <"Planned exception to normal IOP-lowering medication regimen">
-					description = <"">
+				["at0160"] = <
+					text = <"Presumeably completely regimen exposure">
+					description = <"The measured eye had presumeably exposed to IOP-lowering drugs as planned before this measurement.">
+				>
+				["at0161"] = <
+					text = <"Presumeable incomplete regimen exposure">
+					description = <"The measured eye had presumeably been incompletely exposed to IOP-lowering drugs compared to the treatment plan before this measurement.">
+				>
+				["at0162"] = <
+					text = <"Uncertain regimen exposure">
+					description = <"It is unknown if or how the measured eye had been exposed to the  IOP-loweing drug regimen.">
+				>
+				["at0163"] = <
+					text = <"No IOP lowering drugs">
+					description = <"The measured eye has not been exposed to IOP-lowering drugs in a way that affects the current measurement.">
 				>
 			>
 		>
@@ -658,8 +633,8 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					description = <"@ internal @">
 				>
 				["at0074"] = <
-					text = <"*Contextual factors (en)">
-					description = <"*Description of factors related to the state of the subject which may affect the intraocular pressure, the ability to accurately measure it, or the interpretation of the measurement. (en)">
+					text = <"*Confounding Factors (en)">
+					description = <"*Patient circumstances or actions which affect interpretation of the result. (en)">
 				>
 				["at0078"] = <
 					text = <"Undersøkelse ikke utført">
@@ -669,10 +644,6 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					text = <"Utvidelse">
 					description = <"*Additional information required to capture local content or to align with other reference models/formalisms. (en)">
 					comment = <"*For example: local information requirements or additional metadata to align with FHIR or CIMI equivalents. (en)">
-				>
-				["at0080"] = <
-					text = <"Multimediarepresentasjon">
-					description = <"Digitale bilder, video eller diagram som representerer målingen av det intraokulære trykket.">
 				>
 				["at0081"] = <
 					text = <"Korrigert trykk">
@@ -721,10 +692,6 @@ For devices that output multiple pressure values, this element should be used to
 				["at0095"] = <
 					text = <"*Prism graduation mark on 43° offset mark (en)">
 					description = <"*The value of the degree of the graduation mark on the Goldmann prism probe that was aligned with 43° offset mark, usually a visible by a red line or the letter A. (en)">
-				>
-				["at0096"] = <
-					text = <"*Mydriasis (en)">
-					description = <"">
 				>
 				["at0097"] = <
 					text = <"*IOPcc - corneal-compensated ocular response analysis (en)">
@@ -797,34 +764,6 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					text = <"*General anaesthesia (en)">
 					description = <"">
 				>
-				["at0133"] = <
-					text = <"*Before procedure (en)">
-					description = <"">
-				>
-				["at0147"] = <
-					text = <"*During procedure (en)">
-					description = <"">
-				>
-				["at0148"] = <
-					text = <"*After procedure (en)">
-					description = <"">
-				>
-				["at0149"] = <
-					text = <"*Provocation test (en)">
-					description = <"">
-				>
-				["at0150"] = <
-					text = <"*Presumably exposed to IOP-lowering medication as previously planned (en)">
-					description = <"">
-				>
-				["at0151"] = <
-					text = <"*Uncertain if exposed to IOP-lowering medications as previously planned (en)">
-					description = <"">
-				>
-				["at0152"] = <
-					text = <"*No IOP-lowering medications (en)">
-					description = <"">
-				>
 				["at0153"] = <
 					text = <"*Blepharospasm (en)">
 					description = <"">
@@ -841,13 +780,25 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 					text = <"*Corrected for CCT (en)">
 					description = <"*The Pressure was corrected for central corneal thickness. (en)">
 				>
-				["at0157"] = <
-					text = <"*Not exposed to IOP-lowering medications as previously planned (en)">
+				["at0159"] = <
+					text = <"*Exposure to IOP-lowering drugs (en)">
 					description = <"">
 				>
-				["at0158"] = <
-					text = <"*Planned exception to normal IOP-lowering medication regimen (en)">
-					description = <"">
+				["at0160"] = <
+					text = <"*Presumeably completely regimen exposure (en)">
+					description = <"*The measured eye had presumeably exposed to IOP-lowering drugs as planned before this measurement. (en)">
+				>
+				["at0161"] = <
+					text = <"*Presumeable incomplete regimen exposure (en)">
+					description = <"*The measured eye had presumeably been incompletely exposed to IOP-lowering drugs compared to the treatment plan before this measurement. (en)">
+				>
+				["at0162"] = <
+					text = <"*Uncertain regimen exposure (en)">
+					description = <"*It is unknown if or how the measured eye had been exposed to the  IOP-loweing drug regimen. (en)">
+				>
+				["at0163"] = <
+					text = <"*No IOP lowering drugs (en)">
+					description = <"*The measured eye has not been exposed to IOP-lowering drugs in a way that affects the current measurement. (en)">
 				>
 			>
 		>
@@ -872,7 +823,6 @@ It Is sensible to display the approximately equivalent mmHG values to the users 
 				["at0085"] = <[SNOMED-CT::1286917009]>
 				["at0087"] = <[SNOMED-CT::389149000]>
 				["at0086"] = <[SNOMED-CT::252804008]>
-				["at0096"] = <[SNOMED-CT::37125009]>
 				["at0106"] = <[SNOMED-CT::10904000]>
 				["at0107"] = <[SNOMED-CT::33586001]>
 				["at0108"] = <[SNOMED-CT::40199007]>
